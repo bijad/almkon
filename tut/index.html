@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>دليل المكون</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Reem+Kufi:wght@500;700&display=swap">
+<style>img{max-width:100%}</style><style>
+/* Layout: one RTL reading column (max 880px) with a sticky section bar; sand-and-gold palette from the app itself. */
+:root{
+  --bg:#f5edda; --paper:#fffaf0; --ink:#2a1c0e; --muted:#6d5a40; --line:#d9c8a2;
+  --gold:#a9771f; --gold-soft:#e8cf9a; --accent:#8c2b3e; --ok:#2f7d4f;
+  --common:#2f9a86; --rare:#2b78b8; --legendary:#b4871f;
+  --display:"Reem Kufi","Tajawal",system-ui,sans-serif; --body:"Tajawal",system-ui,"Segoe UI",Arial,sans-serif;
+  direction:rtl;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#17110a; --paper:#221a10; --ink:#f3e7cf; --muted:#c9b58d; --line:#4a3a24;
+  --gold:#e2bd67; --gold-soft:#6b5325; --accent:#e09aa8; --ok:#7dcf9a;
+  --common:#63d5bd; --rare:#67b8f2; --legendary:#e8bd63; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#17110a; --paper:#221a10; --ink:#f3e7cf; --muted:#c9b58d; --line:#4a3a24;
+  --gold:#e2bd67; --gold-soft:#6b5325; --accent:#e09aa8; --ok:#7dcf9a;
+  --common:#63d5bd; --rare:#67b8f2; --legendary:#e8bd63; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.75;margin:0}
+.wrap{max-width:880px;margin:0 auto;padding-inline:18px;padding-block:0 64px}
+h1,h2,h3{font-family:var(--display);line-height:1.3;text-wrap:balance;margin:0}
+h1{font-size:clamp(34px,6vw,54px);color:var(--gold)}
+h2{font-size:clamp(24px,4vw,32px);color:var(--gold);padding-top:14px}
+h3{font-size:20px;margin-top:6px}
+p{margin:0}
+a{color:var(--gold)}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;padding-block:10px;margin-inline:-18px;padding-inline:18px;scrollbar-width:thin}
+.nav a{white-space:nowrap;font-size:14px;font-weight:700;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:5px 12px;background:var(--paper)}
+.nav a:focus-visible,.btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.hero{display:grid;grid-template-columns:1fr auto;gap:22px;align-items:center;padding-block:34px 18px}
+.hero img{width:150px;height:auto;border-radius:34px;box-shadow:0 14px 40px rgba(0,0,0,.25)}
+.hero .lead{font-size:19px;color:var(--muted);margin-top:10px;max-width:46ch}
+.eyebrow{font-size:13px;letter-spacing:.08em;color:var(--muted);font-weight:700}
+section{display:grid;gap:16px;padding-block:22px;border-top:1px solid var(--line)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px 18px;min-width:0}
+.card h3{margin-bottom:6px}
+.shot{display:grid;gap:8px;justify-items:center}
+.shot img{width:100%;max-width:300px;height:auto;border-radius:22px;border:1px solid var(--line);box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.shot figcaption,.cap{font-size:13.5px;color:var(--muted);text-align:center}
+.photo{width:100%;height:auto;border-radius:18px;border:1px solid var(--line)}
+ol,ul{margin:0;padding-inline-start:22px;display:grid;gap:6px}
+.steps{counter-reset:s;list-style:none;padding:0;gap:10px}
+.steps li{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
+.steps li::before{counter-increment:s;content:counter(s,arabic-indic);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--gold);color:#1d1408;font-weight:800;font-family:var(--display)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:5px 12px;border:1px solid var(--line);background:var(--paper);font-weight:700;font-size:15px}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+.ladder{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.ladder figure{margin:0;display:grid;gap:4px;justify-items:center;text-align:center;font-size:14px}
+.ladder img{width:100%;max-width:120px;height:auto;border-radius:50%;border:3px solid var(--gold)}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:15.5px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:right;vertical-align:top}
+th{color:var(--muted);font-weight:700;font-size:13.5px}
+.tablewrap{overflow-x:auto}
+.icons{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.icons img{width:44px;height:44px}
+.note{border-inline-start:4px solid var(--gold);padding:10px 14px;background:var(--paper);border-radius:0 12px 12px 0;color:var(--muted);font-size:15.5px}
+.faq details{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+.faq summary{cursor:pointer;font-weight:800;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq details p{margin-top:8px;color:var(--muted)}
+.foot{color:var(--muted);font-size:13.5px;padding-top:26px;border-top:1px solid var(--line)}
+@media (max-width:640px){
+  .hero{grid-template-columns:1fr;text-align:center;justify-items:center}
+  .grid2,.grid3{grid-template-columns:1fr}
+  .ladder{grid-template-columns:repeat(3,1fr)}
+}
+@media (prefers-reduced-motion:no-preference){.nav a{transition:background .15s}}
+</style></head><body>
+
+<div class="wrap" lang="ar">
+  <nav class="nav" aria-label="أقسام الدليل">
+    <a href="#start">البداية</a><a href="#city">مدينتك والصيد</a><a href="#levels">المستويات</a><a href="#social">الأصدقاء والفرق</a><a href="#war">الحرب</a><a href="#challenge">تحدي راس براس</a><a href="#tournaments">البطولات</a><a href="#faq">أسئلة شائعة</a>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <p class="eyebrow">دليل اللاعب</p>
+      <h1>المكون</h1>
+      <p class="lead">لعبة صيد الضبان بالواقع المعزز في حيّك، وحرب أونلاين في قرية نجدية، وبطولات بكؤوس. هذا الدليل يشرح كل شيء من أول ضب إلى الكأس.</p>
+    </div>
+    <img src="img/icon.png" alt="أيقونة لعبة المكون" width="400" height="528">
+  </header>
+
+  <section id="start">
+    <h2>وش هي المكون؟</h2>
+    <div class="grid2">
+      <div>
+        <p>المكون لعبة من قسمين يكمّلون بعض:</p>
+        <ul>
+          <li><strong>مدينتك:</strong> خريطة حيّك الحقيقي، تطلع فيها ضبان قريبة منك، تمشي لها بنفسك وتصيدها بالكاميرا (واقع معزز). كل صيدة هنا ترفع مستواك وترتيبك.</li>
+          <li><strong>الحرب:</strong> قرية نجدية داخل اللعبة، تلعب فيها لحالك أو مع أصدقائك أونلاين: صيد فردي، أو مواجهة فريقين Search and Destroy، أو تحدي راس براس، أو بطولة كاملة بجدول مواجهات وكأس.</li>
+        </ul>
+        <p style="margin-top:10px">ما فيه تسجيل دخول ولا كلمة سر: أول ما تفتح اللعبة ينعمل لك ملف لاعب، وتختار اسمك وشخصيتك.</p>
+      </div>
+      <img class="photo" src="img/dhab-photo.jpg" alt="ضب، الطريدة في لعبة المكون" width="900" height="900">
+    </div>
+
+    <h3>أول خطواتك</h3>
+    <ol class="steps">
+      <li><div><strong>اختر اسمك.</strong> الاسم فريد: ما ينفع اسمين متشابهين في اللعبة كلها، فإذا قال لك إن الاسم مأخوذ غيّره شوي.</div></li>
+      <li><div><strong>اختر شخصيتك</strong> (صياد أو صيادة). الصورة تتغيّر مع كل مستوى تطلعه.</div></li>
+      <li><div><strong>اسمح بالموقع</strong> عشان تشوف الضبان القريبة منك على الخريطة، والكاميرا عشان تصيد.</div></li>
+      <li><div><strong>تعرّف على الشريط السفلي:</strong> ثلاث صفحات: <strong>الحرب</strong>، <strong>مدينتك</strong>، <strong>البطولات</strong>. وفوقه بطاقتك: صورتك واسمك ومستواك، وزر «قائمة الصدارة» وعدد صيدك.</div></li>
+    </ol>
+  </section>
+
+  <section id="city">
+    <h2>مدينتك: الخريطة والصيد</h2>
+    <p>الخريطة تعرض الضبان اللي في حدود <strong>كيلو واحد</strong> منك. ضبان الحدائق البعيدة (اللي في حدود ٣ كم) وضبان المماشي تشوفها من أبعد عشان تعرف وين تروح.</p>
+
+    <h3>أنواع الضبان ونقاطها</h3>
+    <div class="chips">
+      <span class="chip"><i class="dot" style="background:var(--common)"></i> عادي · ١٠ نقاط</span>
+      <span class="chip"><i class="dot" style="background:var(--rare)"></i> نادر · ٣٠ نقطة</span>
+      <span class="chip"><i class="dot" style="background:var(--legendary)"></i> أسطوري · ٧٥ نقطة</span>
+    </div>
+
+    <h3>من وين يجي الضب؟</h3>
+    <div class="grid3">
+      <div class="card"><h3>ضب البيت</h3><p>ضب شخصي لك قريب من مكانك، يرجع لك <strong>كل ٢٤ ساعة</strong> بعد ما تصيده. حتى لو ما حولك حدائق.</p></div>
+      <div class="card"><h3>حديقة الحي</h3><p>أقرب حديقة لك في حدود كيلو تنزل فيها <strong>٣ ضبان كل يوم</strong>. إذا ما فيه حديقة في كيلو، تاخذ أقرب حديقة في ٣ كم وتشوف ضبانها من بعيد.</p></div>
+      <div class="card"><h3>الممشى</h3><p>أقرب ممشى عام منك في حدود ٥ كم ينزل فيه ٣ ضبان يومياً، وتقدر تشوفها على الخريطة من ٥ كم.</p></div>
+    </div>
+
+    <h3>كيف تصيد</h3>
+    <ol class="steps">
+      <li><div>افتح <strong>مدينتك</strong> واضغط على الضب في الخريطة.</div></li>
+      <li><div>امشِ له لين تصير على بعد <strong>٣٠ متر</strong>: الزر يتحوّل من «اقترب للصيد» إلى <strong>«اضغط للصيد»</strong>.</div></li>
+      <li><div>تفتح الكاميرا والضب قدامك في مكانك الحقيقي. دوّر عليه، استخدم <strong>الزوم</strong> (اضغط مطوّل على العدسة) وصوّب.</div></li>
+      <li><div>اضغط زر <strong>الإطلاق</strong>. ما يروح عليك رصاص إذا ما فيه ضب قدامك، اللعبة تقول لك «لا يوجد ضب للتصويب».</div></li>
+      <li><div>بعد الصيدة يطلع زر <strong>«شارك الصيدة»</strong>: مقطع قصير فيه التصويب والطلقة مع شعار المكون، تنشره على أي تطبيق أو تحفظه.</div></li>
+    </ol>
+    <p class="note">كل صيدة معتمدة تُحسب في ملفك وترفع مستواك. التدريب أوفلاين ونتائج الحرب ما ترفع المستوى.</p>
+  </section>
+
+  <section id="levels">
+    <h2>المستويات والتيجان</h2>
+    <p>عشرة مستويات، كل مستوى له اسم وصورة. تطلع حسب عدد صيدك المعتمد في مدينتك:</p>
+    <div class="ladder">
+      <figure><img src="img/level-01.png" alt="صورة المستوى الأول" width="360" height="360"><strong>١ · راعي البر</strong><span>من البداية</span></figure>
+      <figure><img src="img/level-03.png" alt="صورة المستوى الثالث" width="360" height="360"><strong>٣ · قصّاص أثر</strong><span>١٥ صيدة</span></figure>
+      <figure><img src="img/level-05.png" alt="صورة المستوى الخامس" width="360" height="360"><strong>٥ · قنّاص الوادي</strong><span>٥٠ صيدة</span></figure>
+      <figure><img src="img/level-07.png" alt="صورة المستوى السابع" width="360" height="360"><strong>٧ · شاهين البر</strong><span>١٠٥ صيدات</span></figure>
+      <figure><img src="img/level-10.png" alt="صورة المستوى العاشر" width="360" height="360"><strong>١٠ · أسطورة نجد</strong><span>٢٢٥ صيدة</span></figure>
+    </div>
+    <div class="tablewrap"><table>
+      <thead><tr><th>المستوى</th><th>الاسم</th><th>الصيد المطلوب</th><th>المستوى</th><th>الاسم</th><th>الصيد المطلوب</th></tr></thead>
+      <tbody>
+        <tr><td>١</td><td>راعي البر</td><td>٠</td><td>٦</td><td>خبير الجحور</td><td>٧٥</td></tr>
+        <tr><td>٢</td><td>متتبّع الأثر</td><td>٥</td><td>٧</td><td>شاهين البر</td><td>١٠٥</td></tr>
+        <tr><td>٣</td><td>قصّاص أثر</td><td>١٥</td><td>٨</td><td>ذيب المقناص</td><td>١٤٠</td></tr>
+        <tr><td>٤</td><td>عين النفود</td><td>٣٠</td><td>٩</td><td>شيخ الصيادين</td><td>١٨٠</td></tr>
+        <tr><td>٥</td><td>قنّاص الوادي</td><td>٥٠</td><td>١٠</td><td>أسطورة نجد</td><td>٢٢٥</td></tr>
+      </tbody>
+    </table></div>
+    <div class="grid2">
+      <div class="card"><h3>قائمة الصدارة</h3><p>زر «قائمة الصدارة» في بطاقتك يفتح ترتيب الصيادين حسب الصيد المعتمد. ترتيبك يظهر في البطاقة (مثل #٥).</p></div>
+      <div class="card"><h3>التيجان</h3><p>أول ثلاثة في قائمة الصدارة ياخذون تاج يظهر جنب اسمهم في كل مكان. التاج يتغيّر مع الترتيب: إذا سبقك أحد ينتقل له.</p></div>
+    </div>
+  </section>
+
+  <section id="social">
+    <h2>الأصدقاء والمجلس والفرق</h2>
+    <div class="grid2">
+      <div style="display:grid;gap:12px">
+        <div class="card"><h3>الأصدقاء</h3><p>أضف أصدقاءك من ملفاتهم، وابحث بالاسم في قائمتك. إذا دعاك صديق إلى جلسة حرب يوصلك إشعار، وتدخل معه مباشرة.</p></div>
+        <div class="card"><h3>المجلس والحي</h3><p>محادثة عامة لكل اللاعبين ومحادثة لحيّك. الحساب «المكون» حساب رسمي ينشر نتائج التحديات والبطولات تلقائياً. المشرفون ينظمون المجلس ويقدرون ينشئون بطولات.</p></div>
+        <div class="card"><h3>الفرق</h3>
+          <ul>
+            <li>أنشئ فريقاً باسم ورمز (مثل KSA) أو انضم لفريق: الانضمام إما مباشر أو <strong>بطلب</strong> يقبله القائد أو النائب أو الضابط.</li>
+            <li>الأدوار: <strong>قائد</strong>، <strong>نائب القائد</strong>، <strong>ضابط</strong>، <strong>عضو</strong>. القائد ما يقدر يترك الفريق إلا بعد ما ينقل القيادة.</li>
+            <li><strong>كأس العضو</strong> = صيده في الخريطة + صيده في حرب الفرق. <strong>كؤوس الفريق</strong> = مجموع كؤوس الأعضاء ÷ عددهم.</li>
+            <li>للفريق محادثة خاصة، وزر دعوة، وزر مغادرة بجنبه.</li>
+          </ul>
+        </div>
+      </div>
+      <figure class="shot"><img src="img/teams.webp" alt="صفحة الفرق في المكون: بطاقة فريق صقور نجد وأعضاؤه" width="920" height="2000"><figcaption>صفحة الفرق: بطاقة الفريق، كؤوسه، وأعضاؤه مرتبين حسب الكؤوس.</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="war">
+    <h2>الحرب: القرية النجدية</h2>
+    <div class="grid2">
+      <div>
+        <p>من صفحة <strong>الحرب</strong> تدخل قرية نجدية كاملة: بيوت طين وبير ونخل وجحور. تتحرك بعصا التحكم، تصوّب بسحب الشاشة، وتستخدم الزوم والقرفصاء والانبطاح والتعبئة والإطلاق. الضغط مرتين على العصا يقفز.</p>
+        <h3>طرق اللعب</h3>
+        <ul>
+          <li><strong>اللعب أوفلاين:</strong> تدريب لحالك بدون إنترنت: ١٠ ضبان في القرية، وتقدر تختار نهار أو ليل.</li>
+          <li><strong>صيد فردي (أونلاين):</strong> حتى ٨ لاعبين، كل واحد لنفسه. قبل البداية تصوّتون على عدد الصيد (٣ أو ٥ أو ٧ أو ٩) وعلى الوقت: نهار أو ليل. أول من يوصل العدد يفوز.</li>
+          <li><strong>Search and Destroy:</strong> فريقان ٥ ضد ٥، جولات مدتها دقيقتان، الفريق اللي ياخذ ٣ جولات يفوز. الطلقة من غير زوم تتشتت شوي، فاعتمد على المنظار.</li>
+        </ul>
+        <div class="icons" aria-label="نهار أو ليل"><img src="img/sun.png" alt="نهار"><img src="img/moon.png" alt="ليل"><span class="cap">التصويت على وقت المباراة</span></div>
+      </div>
+      <figure class="shot"><img src="img/war-round.jpg" alt="مباراة في القرية النجدية: نتيجة الجولة وعدّاد الجولة التالية" width="589" height="1280"><figcaption>بين الجولات: نتيجة الجولة وعدّاد الجولة الجاية.</figcaption></figure>
+    </div>
+    <div class="grid3">
+      <div class="card"><h3>كيل كام</h3><p>إذا انصبت تشوف اللقطة من عين اللي أصابك، وفي نهاية المباراة «لقطاتي» بكل إصاباتك. تقدر تشارك أي لقطة كمقطع.</p></div>
+      <div class="card"><h3>تخطي اللقطة</h3><p>بين الجولات تطلع لقطة الجولة. إذا كل اللاعبين ضغطوا «تخطي اللقطة» تبدأ الجولة الجاية على طول.</p></div>
+      <div class="card"><h3>الصوت والعرض</h3><p>محادثة صوتية مع فريقك من زر المايك. ومن إعدادات اللعبة تقدر تلعب الحرب <strong>بالعرض</strong> وتضبط الأصوات.</p></div>
+    </div>
+  </section>
+
+  <section id="challenge">
+    <h2>تحدي راس براس</h2>
+    <div class="grid2">
+      <div class="card"><h3>كيف يصير</h3><p>من ملف أي لاعب يقبل التحديات اضغط «تحدي». إذا قبل، تدخلون مباراة Search and Destroy واحد ضد واحد، أفضل من ٣ جولات: أول من ياخذ جولتين يفوز.</p></div>
+      <div class="card"><h3>النتيجة</h3><p>النتيجة تنحسب في ملفك (فوز / خسارة) وينشرها حساب «المكون» في المجلس. ما فيه تعادل: إذا تعادلتم في الجولة الحاسمة ينزل ضب الحسم (اقرأ تحته).</p></div>
+    </div>
+  </section>
+
+  <section id="tournaments">
+    <h2>البطولات: من أول مواجهة إلى الكأس</h2>
+    <div class="grid2">
+      <div>
+        <ol class="steps">
+          <li><div><strong>التسجيل:</strong> تظهر البطولة في «القادمة» مع وقت التسجيل والقرعة والبداية. اضغط «تسجيل» (أو «انسحاب» إذا غيّرت رأيك قبل القرعة).</div></li>
+          <li><div><strong>القرعة:</strong> في وقتها يتوزّع المسجّلون على جدول المواجهات تلقائياً. يوصلك إشعار.</div></li>
+          <li><div><strong>المباريات:</strong> عند البداية يوصلك إشعار، تدخل مباراتك من البطاقة. بين الأدوار استراحة ٣ دقايق مع عدّاد للدور الجاي.</div></li>
+          <li><div><strong>الكأس:</strong> الفائز بالنهائي ياخذ كأس يظهر في ملفه، ويُعلن اسمه في المجلس.</div></li>
+        </ol>
+        <h3 style="margin-top:14px">تفاصيل مهمة</h3>
+        <ul>
+          <li>نوعان: <strong>راس براس</strong> (واحد ضد واحد) و<strong>فرق</strong> (٥ ضد ٥).</li>
+          <li>المباراة إما «أفضل من ٣ جولات» أو «أفضل من ٥» حسب ما يحدده المشرف.</li>
+          <li>تقدر تشاهد أي مباراة جارية: اضغط <strong>العين الحمراء</strong> على المباراة. اللاعبين يشوفون من يشاهدهم، وتقدر تخرج من المشاهدة أي وقت.</li>
+          <li>البطولة اللي تُلغى (مثلاً مسجّل واحد فقط عند القرعة) تبقى في «القادمة» ساعة مع سبب الإلغاء.</li>
+        </ul>
+      </div>
+      <figure class="shot"><img src="img/tournaments.webp" alt="صفحة البطولات: بطولة منتهية مع الفائز وجدول المواجهات" width="920" height="2000"><figcaption>جدول المواجهات: النهائي فوق، ثم نصف النهائي، ثم ربع النهائي.</figcaption></figure>
+    </div>
+
+    <h3>الحسم عند التعادل: ما فيه تعادل في المكون</h3>
+    <p>إذا وصلت المباراة للجولة الحاسمة (١-١ من ٣، أو ٢-٢ من ٥) وانتهى وقتها والاثنين أحياء:</p>
+    <div class="grid2">
+      <div class="card"><h3>صيد الضب</h3><p>في راس براس تروح المباراة مباشرة لطور الضب: مقدمة ٥ ثوانٍ مع صوت، ثم يطلع <strong>ضب سريع عند البير</strong> في وسط القرية. ما أحد يقدر يضر الثاني، و<strong>اللي يصيد الضب أول يفوز</strong>. المهلة ٣ دقايق.</p></div>
+      <div class="card"><h3>كشف اللاعبين</h3><p>في بطولات الفرق يصوّت الفريقان: صيد الضب أو كشف اللاعبين. في الكشف تظهر أسماء وصور الكل من بعيد ومن ورا الجدران لمدة ٣ دقايق إضافية.</p></div>
+    </div>
+    <div class="icons"><img src="img/trophy_gold.png" alt="كأس ذهبي"><img src="img/trophy_silver.png" alt="كأس فضي"><img src="img/trophy_bronze.png" alt="كأس برونزي"><img src="img/dhab.png" alt="ضب الحسم"><span class="cap">كؤوس البطولات في ملف اللاعب، وضب الحسم.</span></div>
+  </section>
+
+  <section id="faq" class="faq">
+    <h2>أسئلة شائعة</h2>
+    <details><summary>ما يطلع لي ضب في الخريطة، ليش؟</summary><p>تأكد أن الموقع مسموح للعبة. الضبان تظهر في حدود كيلو منك، وضبان الحديقة البعيدة أو الممشى من أبعد. إذا انتقلت لمدينة ثانية، اللعبة تربطك تلقائياً بأقرب حديقة في مكانك الجديد خلال دقايق. وضب البيت يرجع لك كل ٢٤ ساعة مهما كان مكانك.</p></details>
+    <details><summary>ليش ما يطلع زر «اضغط للصيد»؟</summary><p>لازم تكون على بعد ٣٠ متر أو أقل من الضب، وتنتظر لين يتحدد موقعك بدقة. امشِ باتجاهه شوي وانتظر ثانية.</p></details>
+    <details><summary>ليش الاسم اللي أبيه مرفوض؟</summary><p>الأسماء فريدة في اللعبة كلها، وبعض الأسماء محجوزة. غيّر حرفاً أو أضف رقماً.</p></details>
+    <details><summary>كيف أرفع مستواي بسرعة؟</summary><p>المستوى من الصيد المعتمد في مدينتك فقط: ضب البيت يومياً، وضبان الحديقة والممشى. الحرب والتدريب ما ترفع المستوى، لكن الحرب تعطيك خبرة وكؤوس الفرق.</p></details>
+    <details><summary>انقطعت المباراة وطلع لي «انتهت الغرفة»؟</summary><p>الغرفة انتهت من جهة السيرفر (مثلاً خرج كل اللاعبين). اللعبة ترجعك لقائمة الحرب تلقائياً خلال ثوانٍ وتقدر تبدأ مباراة جديدة.</p></details>
+    <details><summary>من يقدر ينشئ بطولة؟</summary><p>المشرفون فقط. اللاعبون يسجلون ويلعبون ويشاهدون. بعض البطولات تشترط مستوى أدنى للتسجيل.</p></details>
+    <details><summary>وش الفرق بين تحدي راس براس وبطولة راس براس؟</summary><p>التحدي مباراة واحدة بينك وبين لاعب تختاره أنت، وقتها أنتم تحددونه. البطولة جدول مواجهات لعدة لاعبين في وقت محدد، والفائز ياخذ كأس.</p></details>
+  </section>
+
+  <p class="foot">دليل لعبة المكون · إصدار ١.٠.٧. الأرقام والمسافات في هذا الدليل هي قواعد اللعبة الحالية وقد تتغيّر مع التحديثات.</p>
+</div>
+
+</body></html>
