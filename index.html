@@ -229,23 +229,16 @@ body { padding-bottom: 76px; }
   .badge, .pill { transition: none; }
 }
 
-/* Owner's key (2026-10-19): a quiet key beside «حمّل اللعبة» that opens the dashboard's site editor. */
-.top-actions { display: inline-flex; align-items: center; gap: 10px; }
-.owner-key { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 50%;
-  border: 1px solid var(--line); color: var(--gold); opacity: .55; transition: opacity .2s, border-color .2s; }
-.owner-key:hover, .owner-key:focus-visible { opacity: 1; border-color: var(--gold); }
-.owner-key svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.owner-key circle { fill: currentColor; stroke: none; }
-
-.key-box { border: 1px solid var(--line); border-radius: 20px; background: var(--ember); color: var(--sand); padding: 22px; width: min(340px, 90vw); }
-.key-box::backdrop { background: rgba(0, 0, 0, .6); }
-.key-box form { display: grid; gap: 12px; }
-.key-box strong { font-family: var(--display); color: var(--gold-hi); font-size: 18px; }
-.key-box label { display: grid; gap: 6px; color: var(--dune); font-size: 14px; }
-.key-box input { font: inherit; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--night); color: var(--sand); }
-.key-actions { display: flex; gap: 10px; }
-.key-actions button { font: inherit; border-radius: 999px; padding: 9px 20px; border: 1px solid var(--line); background: transparent; color: var(--dune); cursor: pointer; }
-.key-actions .key-go { background: linear-gradient(180deg, var(--gold-hi), var(--gold)); color: var(--night); border: 0; font-weight: 700; }
+/* Site links (2026-10-19): the other pages, in the header and the footer. Phones: brand + download on one row,
+   the links on their own row under them. */
+.top { flex-wrap: wrap; row-gap: 10px; }
+.links { display: flex; flex-wrap: wrap; gap: 4px 18px; order: 3; flex-basis: 100%; font-size: 15px; font-weight: 500; }
+.links a, footer nav a { color: var(--dune); text-decoration: none; }
+.links a:hover, footer nav a:hover { color: var(--gold-hi); }
+footer nav { flex-wrap: wrap; gap: 6px 20px; }
+@media (min-width: 720px) {
+  .links { order: 0; flex-basis: auto; margin-inline-start: auto; gap: 22px; }
+}
 </style>
 </head>
 <body>
@@ -257,10 +250,10 @@ body { padding-bottom: 76px; }
     <img src="img/icon.jpg" alt="" width="44" height="44">
     <span>المكون</span>
   </a>
-  <span class="top-actions">
-    <a class="pill" href="https://apps.apple.com/sa/app/%D8%A7%D9%84%D9%85%D9%83%D9%88%D9%86/id6815615707" target="_blank" rel="noopener">حمّل اللعبة</a>
-    <a class="owner-key" href="#" id="ownerKey" aria-label="دخول الإدارة" title="دخول الإدارة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 7a4 4 0 1 1-3.9 5H3v3h3v-3h2v3h3v-3h.1A4 4 0 0 1 15 7z"/><circle cx="15.5" cy="10.5" r="1"/></svg></a>
-  </span>
+  <nav class="links" aria-label="صفحات الموقع">
+    <a href="/tut/">دليل المكون</a><a href="/support">الدعم</a><a href="/privacy">الخصوصية</a><a href="/terms">الشروط</a>
+  </nav>
+  <a class="pill" href="https://apps.apple.com/sa/app/%D8%A7%D9%84%D9%85%D9%83%D9%88%D9%86/id6815615707" target="_blank" rel="noopener">حمّل اللعبة</a>
 </header>
 
 <main id="top">
@@ -415,9 +408,8 @@ body { padding-bottom: 76px; }
 <footer>
   <div class="wrap">
     <span>المكون · من تطوير تجربة</span>
-    <nav>
-      <a href="https://kora.tajroba.sa/Dhab/privacy" target="_blank" rel="noopener">الخصوصية</a>
-      <a href="https://kora.tajroba.sa/Dhab/support" target="_blank" rel="noopener">الدعم</a>
+    <nav aria-label="صفحات الموقع">
+      <a href="/tut/">دليل المكون</a><a href="/support">الدعم</a><a href="/privacy">الخصوصية</a><a href="/terms">الشروط</a>
     </nav>
   </div>
 </footer>
@@ -431,37 +423,5 @@ body { padding-bottom: 76px; }
 </div>
 
 
-<dialog id="keyBox" class="key-box" aria-label="دخول الإدارة">
-  <form method="dialog" id="keyForm">
-    <strong>دخول الإدارة</strong>
-    <label>مسار لوحة التحكم<input id="keyWord" autocomplete="off" autocapitalize="off" spellcheck="false" dir="ltr" required></label>
-    <div class="key-actions"><button type="submit" class="key-go">دخول</button><button type="button" id="keyCancel">إلغاء</button></div>
-  </form>
-</dialog>
-<script>
-/* Owner's key (2026-10-19): the dashboard's address is private, so the page never contains it — the owner types the
-   path once and this device remembers it (local only) — the box opens with it filled in, so a wrong one is easy to fix. */
-(function () {
-  var key = document.getElementById('ownerKey'), box = document.getElementById('keyBox'), word = document.getElementById('keyWord');
-  if (!key || !box || !box.showModal) return;
-  function open(path) { location.href = 'https://mkon.tajroba.sa/' + encodeURIComponent(path) + '/#site'; }
-  function saved() { try { return localStorage.getItem('almkon-owner-path') || ''; } catch (e) { return ''; } }
-  key.addEventListener('click', function (ev) {
-    ev.preventDefault();
-    // Always ask, with the remembered path filled in: one tap on «دخول», or correct a wrong one (2026-10-19).
-    word.value = saved(); box.showModal();
-    if (word.value) document.querySelector('#keyForm .key-go').focus(); else word.focus();
-  });
-  document.getElementById('keyCancel').addEventListener('click', function () { box.close(); });
-  document.getElementById('keyForm').addEventListener('submit', function (ev) {
-    ev.preventDefault();
-    // The bare path, or the dashboard's whole address pasted in (https://mkon.tajroba.sa/<path>/…): keep only the path.
-    var path = word.value.trim().replace(/^https?:\/\//i, '').replace(/^[^\/]*tajroba\.sa\/?/i, '').split(/[\/#?]/)[0];
-    if (!/^[A-Za-z0-9_-]{3,64}$/.test(path)) { word.setCustomValidity('اكتب الكلمة اللي بعد mkon.tajroba.sa/ في رابط لوحتك'); word.reportValidity(); word.setCustomValidity(''); return; }
-    try { localStorage.setItem('almkon-owner-path', path); } catch (e) {}
-    open(path);
-  });
-})();
-</script>
 </body>
 </html>
