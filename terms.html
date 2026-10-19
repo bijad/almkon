@@ -2,70 +2,169 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="شروط استخدام لعبة المكون من تجربة">
+<meta name="apple-itunes-app" content="app-id=6815615707">
+<link rel="icon" href="img/icon.jpg">
 <title>المكون — شروط الاستخدام</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@700;800&family=Reem+Kufi:wght@600;700&display=swap">
 <style>
-  :root{--bg:#f4e9d6;--card:#fffaf0;--ink:#4a2e0e;--muted:#7a5a33;--gold:#9c6d1f;--line:#e5d3b3}
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;line-height:1.9}
-  header{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;border-bottom:1px solid var(--line);background:rgba(255,250,240,.7)}
-  header a{color:var(--ink);text-decoration:none;font-weight:700}
-  header nav a{margin-inline-start:18px;font-weight:500;color:var(--muted)}
-  header nav a[aria-current]{color:var(--gold)}
-  main{max-width:820px;margin:0 auto;padding:28px 20px 60px}
-  .pill{display:inline-block;padding:4px 12px;border:1px solid var(--line);border-radius:999px;color:var(--gold);font-size:13px;background:var(--card)}
-  h1{font-size:30px;margin:14px 0 6px}
-  .lead{color:var(--muted);font-size:17px;margin:0 0 6px}
-  small{color:var(--muted)}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin:18px 0}
-  h2{font-size:19px;margin:26px 0 8px;color:var(--gold)}
-  p{margin:8px 0}
-  a.ltr{direction:ltr;unicode-bidi:embed;color:var(--gold)}
-  footer{text-align:center;color:var(--muted);padding:24px;border-top:1px solid var(--line);font-size:14px}
+/* The home page's night-desert identity: ember surfaces, gold rules; header/footer = site shell below. */
+:root {
+  color-scheme: dark;
+  --night: #110b07; --ember: #1b130c; --ember-2: #261a10;
+  --sand: #f2e4c6; --dune: #c9b797; --gold: #e3b765; --gold-hi: #f8dfa0; --gold-lo: #a8742c;
+  --line: rgba(227, 183, 101, .22);
+  --display: 'Noto Kufi Arabic', 'Geeza Pro', Tahoma, sans-serif;
+  --brand: 'Reem Kufi', 'Noto Kufi Arabic', 'Geeza Pro', sans-serif;
+  --body: 'IBM Plex Sans Arabic', 'Geeza Pro', Tahoma, sans-serif;
+  --sadu: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%236c0f32'/%3E%3Cpath d='M0 40 L20 6 L40 40Z' fill='%23110b07'/%3E%3Cpath d='M9 40 L20 21 L31 40Z' fill='%23e3b765'/%3E%3Cpath d='M20 0 L29 0 L20 13 L11 0Z' fill='%23f2e4c6'/%3E%3C/svg%3E");
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: radial-gradient(ellipse 80% 50% at 80% -10%, #3a2412 0, transparent 60%), var(--night);
+  color: var(--sand); font-family: var(--body); font-size: 17px; line-height: 2; -webkit-text-size-adjust: 100%; }
+a { color: var(--gold); text-underline-offset: .25em; }
+.ltr { direction: ltr; unicode-bidi: isolate; }
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+.sadu { height: 10px; background: var(--sadu) repeat-x; background-size: 20px 10px; opacity: .9; }
+.hero { padding: 46px 0 18px; }
+.pill { display: inline-block; font-size: 13px; letter-spacing: .08em; color: var(--gold); border: 1px solid var(--line);
+  border-radius: 999px; padding: 3px 14px; background: rgba(227, 183, 101, .06); }
+h1 { font-family: var(--display); font-size: clamp(34px, 7vw, 56px); line-height: 1.35; margin: 14px 0 6px;
+  background: linear-gradient(180deg, var(--gold-hi), var(--gold) 60%, var(--gold-lo)); -webkit-background-clip: text;
+  background-clip: text; color: transparent; }
+.lead { font-size: clamp(18px, 2.6vw, 21px); color: #e6d6b6; margin: 0 0 12px; }
+.updated { display: inline-flex; align-items: center; gap: 8px; color: var(--dune); font-size: 14px; }
+.updated::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 10px var(--gold); }
+.summary { margin: 24px 0 8px; padding: 22px 24px; border-radius: 20px; border: 1px solid rgba(227, 183, 101, .45);
+  background: linear-gradient(160deg, rgba(227, 183, 101, .12), rgba(108, 15, 50, .14)); }
+.summary strong { display: block; font-family: var(--display); color: var(--gold-hi); font-size: 20px; margin-bottom: 4px; }
+.summary p { margin: 0; color: #efe2c6; }
+.toc { margin: 26px 0 8px; }
+.toc h2 { font-family: var(--display); font-size: 16px; color: var(--dune); margin: 0 0 10px; font-weight: 700; }
+.toc nav { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+.toc a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 14px; text-decoration: none;
+  color: var(--sand); background: var(--ember); border: 1px solid var(--line); font-size: 15px; line-height: 1.5; }
+.toc a b { color: var(--gold); font-family: var(--display); }
+.toc a:hover { border-color: var(--gold); }
+.sec { margin: 18px 0; padding: 8px 26px 18px; border-radius: 20px; background: linear-gradient(180deg, var(--ember-2), var(--ember));
+  border: 1px solid var(--line); scroll-margin-top: 80px; }
+.sec h2 { display: flex; align-items: center; gap: 12px; font-family: var(--display); font-size: 22px; color: var(--sand);
+  margin: 18px 0 6px; scroll-margin-top: 80px; }
+.sec h2 .n { display: inline-grid; place-items: center; min-width: 38px; height: 38px; border-radius: 12px; font-size: 18px;
+  color: var(--night); background: linear-gradient(180deg, var(--gold-hi), var(--gold)); }
+.sec h3 { font-family: var(--display); font-size: 17px; color: var(--gold); margin: 22px 0 4px; padding-top: 14px;
+  border-top: 1px dashed var(--line); scroll-margin-top: 80px; }
+.sec p { margin: 8px 0; color: #e8dcc3; }
+.contact { margin: 26px 0 10px; padding: 24px; border-radius: 20px; text-align: center; border: 1px solid var(--line);
+  background: radial-gradient(ellipse at 50% 0, rgba(227, 183, 101, .14), transparent 70%), var(--ember); }
+.contact p { margin: 0 0 14px; color: var(--dune); }
+.btn { display: inline-block; padding: 12px 28px; border-radius: 999px; font-weight: 700; text-decoration: none;
+  color: var(--night); background: linear-gradient(180deg, var(--gold-hi), var(--gold)); }
+.top { position: fixed; inset-inline-start: 16px; bottom: 16px; width: 44px; height: 44px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--ember-2); border: 1px solid var(--line); color: var(--gold);
+  text-decoration: none; font-size: 20px; }
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .sec { padding: 4px 18px 14px; }
+  .summary { padding: 18px; }
+  .toc nav { grid-template-columns: 1fr 1fr; }
+}
+/* site-shell:start — the same header and footer on every almkon.sa page (2026-10-19, site_shell.py). */
+.site-top, .site-foot { --s-night: #110b07; --s-dune: #c9b797; --s-gold: #e3b765; --s-gold-hi: #f8dfa0; --s-gold-lo: #a8742c;
+  --s-line: rgba(227, 183, 101, .22); font-family: 'IBM Plex Sans Arabic', 'Geeza Pro', Tahoma, sans-serif; direction: rtl;
+  line-height: 1.6; text-align: right; }
+.site-top { position: relative; z-index: 6; margin: 0; padding: 0; background: rgba(17, 11, 7, .55);
+  border-bottom: 1px solid var(--s-line); }
+.site-sadu { height: 16px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%236c0f32'/%3E%3Cpath d='M0 40 L20 6 L40 40Z' fill='%23110b07'/%3E%3Cpath d='M9 40 L20 21 L31 40Z' fill='%23e3b765'/%3E%3Cpath d='M20 0 L29 0 L20 13 L11 0Z' fill='%23f2e4c6'/%3E%3C/svg%3E") repeat-x center / 16px 16px; border-block: 2px solid var(--s-gold); }
+.site-bar { box-sizing: border-box; max-width: 1160px; margin: 0 auto; padding: 14px 20px; display: flex; flex-wrap: wrap;
+  align-items: center; gap: 10px 18px; }
+.site-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--s-gold-hi);
+  font-family: 'Reem Kufi', 'Noto Kufi Arabic', 'Geeza Pro', sans-serif; font-weight: 700; font-size: 26px; line-height: 1; }
+.site-brand img { display: block; width: 40px; height: 40px; max-width: none; border-radius: 10px; box-shadow: 0 0 0 2px var(--s-gold-lo); }
+.site-links { display: flex; align-items: center; gap: 4px; margin: 0 auto 0 0; padding: 0; background: none; border: 0;
+  position: static; box-shadow: none; }
+.site-links a { color: var(--s-dune); text-decoration: none; font-size: 15px; font-weight: 500; padding: 6px 12px;
+  border: 0; border-radius: 999px; white-space: nowrap; background: none; }
+.site-links a:hover { color: var(--s-gold-hi); }
+.site-links a[aria-current="page"] { color: var(--s-night); background: var(--s-gold); font-weight: 600; }
+.site-get { display: inline-flex; align-items: center; padding: 8px 18px; border-radius: 999px; border: 1.5px solid var(--s-gold);
+  color: var(--s-gold-hi); font-weight: 600; font-size: 15px; text-decoration: none; white-space: nowrap; }
+.site-get:hover { background: var(--s-gold); color: var(--s-night); }
+.site-top a:focus-visible, .site-foot a:focus-visible { outline: 3px solid var(--s-gold-hi); outline-offset: 3px; }
+.site-foot { margin: 40px 0 0; border-top: 1px solid var(--s-line); color: var(--s-dune); font-size: 14px; background: none; }
+.site-foot-in { box-sizing: border-box; max-width: 1160px; margin: 0 auto; padding: 22px 20px 36px; display: flex; flex-wrap: wrap;
+  justify-content: space-between; align-items: center; gap: 10px 24px; }
+.site-foot nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.site-foot a { color: var(--s-dune); text-decoration: none; }
+.site-foot a:hover { color: var(--s-gold-hi); }
+/* Phones: brand + download on the first row, the page links on their own row under them (they scroll sideways on the
+   narrowest phones instead of breaking onto two lines). */
+@media (max-width: 719px) {
+  .site-bar { padding: 12px 16px 10px; gap: 8px 12px; }
+  .site-get { margin-inline-start: auto; padding: 7px 16px; font-size: 14px; }
+  .site-links { order: 3; flex-basis: 100%; margin: 0; justify-content: space-between; overflow-x: auto; scrollbar-width: none; gap: 2px; }
+  .site-links::-webkit-scrollbar { display: none; }
+  .site-links a { font-size: 14px; padding: 5px 9px; }
+  .site-foot-in { padding: 20px 16px 30px; }
+}
+@media (max-width: 359px) {
+  .site-links a { font-size: 13px; padding: 5px 5px; }
+}
+/* site-shell:end */
 </style>
 </head>
-<body>
-<header><a class="brand" href="/">المكون</a><nav><a href="/privacy">الخصوصية</a><a aria-current="page" href="/terms">الشروط</a></nav></header>
-<main>
-<span class="pill">تجربة · TAJROBA</span>
-<h1>شروط الاستخدام</h1>
-<p class="lead">القواعد التي تحكم استخدامك للعبة «المكون» وخدماتها.</p>
-<small>آخر تحديث: ١٦ أكتوبر ٢٠٢٦</small>
-<div class="card"><strong>الخلاصة</strong><p>العب بأدب، احترم اللاعبين، لا تغش، وانتبه لسلامتك وأنت تلعب بالخارج. ما تنشره باسمك أو على حساباتك في المنصات الأخرى مسؤوليتك. يمكننا تقييد الحسابات المخالفة لحماية الجميع.</p></div>
-
-<h2>١. القبول</h2>
-<p>باستخدامك لتطبيق «المكون» (التطبيق) المقدَّم من تجربة (نحن) فإنك توافق على هذه الشروط وعلى <a href="/privacy">سياسة الخصوصية</a>. إذا لم توافق على أيٍّ منها فلا تستخدم التطبيق.</p>
-
-<h2>٢. الحساب واللقب</h2>
-<p>يُنشأ لك ملف لاعب على هذا الجهاز باسم مستعار (لقب) تختاره، ويمكنك ربطه ببريد إلكتروني لاسترجاعه. الألقاب فريدة، ويُرفض اللقب المسيء أو المضلِّل أو المنتحِل لشخص أو جهة. أنت مسؤول عن كل ما يجري من خلال ملفك.</p>
-<p>التطبيق موجَّه لمن بلغ ثلاث عشرة سنة فأكثر. إذا كنت دون ذلك فاستخدمه بإشراف وليّ أمرك.</p>
-
-<h2>٣. السلوك داخل اللعبة</h2>
-<p>يُمنع الغش والتلاعب والبرامج المساعدة واستغلال الأخطاء، كما يُمنع التحرش والإساءة والتهديد والمحتوى المخالف للذوق العام أو للأنظمة في المحادثات والأسماء والفرق والمقاطع. يمكننا كتم أو تقييد أو حذف أي ملف يخالف ذلك دون إشعار مسبق، والإبلاغ متاح من داخل التطبيق.</p>
-
-<h2>٤. السلامة أثناء اللعب</h2>
-<p>التطبيق يستخدم الخريطة والواقع المعزز ويشجّع على الحركة بالخارج. انتبه لمحيطك، لا تلعب أثناء القيادة، ولا تدخل أماكن خاصة أو خطرة. أنت المسؤول عن سلامتك وسلامة من حولك، ولا نتحمل مسؤولية إصابات أو أضرار تنتج عن عدم الانتباه أثناء اللعب.</p>
-
-<h2>٥. المحتوى الذي تنشره</h2>
-<p>قد تتيح اللعبة حفظ لقطات من مبارياتك ومشاركتها، أو ربط حسابك في منصات أخرى (مثل تيك توك) ونشر اللقطات عليها باسمك. أنت المسؤول الوحيد عما تنشره وعن التزامه بشروط تلك المنصات وبالأنظمة. الربط اختياري، ويتم بموافقتك الصريحة، ويمكنك إلغاؤه من داخل التطبيق في أي وقت. لا ننشر شيئًا على حسابك دون أمرٍ منك.</p>
-<p>عند المشاركة في المنافسات المبنية على المشاهدات أو النتائج، نعرض لقبك وأرقامك العامة للاعبين الآخرين. يحق لنا استبعاد المحتوى أو المشاركات التي تخالف هذه الشروط أو تُحقَّق بالتلاعب.</p>
-
-<h2>٦. الملكية الفكرية</h2>
-<p>اللعبة وتصاميمها وأسماؤها وشخصياتها وأصواتها ملك لتجربة أو لمرخّصيها. نمنحك رخصة شخصية غير حصرية وغير قابلة للتحويل لاستخدام التطبيق للترفيه. لا يجوز نسخ التطبيق أو تعديله أو إعادة توزيعه أو استخدام محتواه تجاريًا دون إذن كتابي.</p>
-
-<h2>٧. التغييرات والتوفر</h2>
-<p>نطوّر اللعبة باستمرار؛ قد نضيف ميزات أو نزيلها أو نعدّل قواعدها ونقاطها ومواسمها، وقد تتوقف الخدمة مؤقتًا للصيانة. قد نطلب تحديث التطبيق لمواصلة اللعب. تُقدَّم الخدمة «كما هي» دون ضمانات صريحة أو ضمنية بقدر ما يسمح به النظام.</p>
-
-<h2>٨. إنهاء الاستخدام</h2>
-<p>يمكنك حذف ملفك من داخل التطبيق في أي وقت. ويحق لنا تعليق أو إنهاء الوصول لأي ملف يخالف هذه الشروط أو يضر باللاعبين أو بالخدمة.</p>
-
-<h2>٩. تحديث الشروط</h2>
-<p>قد نحدّث هذه الشروط عند تغيّر طريقة عمل الخدمة، ويبيّن التاريخ أعلاه آخر تحديث. استمرارك في الاستخدام بعد التحديث يعني قبولك للنسخة الجديدة.</p>
-
-<h2>١٠. النظام المعمول به والتواصل</h2>
-<p>تخضع هذه الشروط لأنظمة المملكة العربية السعودية. للاستفسار أو الاعتراض أو الإبلاغ، تواصل مع <a class="ltr" href="mailto:kora@tajroba.sa?subject=Almkon%20Terms">kora@tajroba.sa</a>.</p>
+<body id="top">
+<!-- site-shell:header -->
+<header class="site-top">
+  <div class="site-sadu" aria-hidden="true"></div>
+  <div class="site-bar">
+    <a class="site-brand" href="/"><img src="/img/icon.jpg" alt="" width="40" height="40"><span>المكون</span></a>
+    <nav class="site-links" aria-label="صفحات الموقع">
+      <a href="/">الرئيسية</a><a href="/tut/">دليل المكون</a><a href="/support">الدعم</a><a href="/privacy">الخصوصية</a><a aria-current="page" href="/terms">الشروط</a>
+    </nav>
+    <a class="site-get" href="https://apps.apple.com/sa/app/%D8%A7%D9%84%D9%85%D9%83%D9%88%D9%86/id6815615707" target="_blank" rel="noopener">حمّل اللعبة</a>
+  </div>
+</header>
+<!-- /site-shell:header -->
+<main class="wrap">
+  <div class="hero">
+    <span class="pill">تجربة · TAJROBA</span>
+    <h1>شروط الاستخدام</h1>
+    <p class="lead">القواعد التي تحكم استخدامك للعبة «المكون» وخدماتها.</p>
+    <span class="updated">آخر تحديث: ١٦ أكتوبر ٢٠٢٦</span>
+  </div>
+  <div class="summary"><strong>الخلاصة</strong><p>العب بأدب، احترم اللاعبين، لا تغش، وانتبه لسلامتك وأنت تلعب بالخارج. ما تنشره باسمك أو على حساباتك في المنصات الأخرى مسؤوليتك. يمكننا تقييد الحسابات المخالفة لحماية الجميع.</p></div>
+  <div class="toc"><h2>محتوى الشروط</h2><nav aria-label="محتوى الشروط"><a href="#t1"><b>١</b><span>القبول</span></a><a href="#t2"><b>٢</b><span>الحساب واللقب</span></a><a href="#t3"><b>٣</b><span>السلوك داخل اللعبة</span></a><a href="#t4"><b>٤</b><span>السلامة أثناء اللعب</span></a><a href="#t5"><b>٥</b><span>المحتوى الذي تنشره</span></a><a href="#t6"><b>٦</b><span>الملكية الفكرية</span></a><a href="#t7"><b>٧</b><span>التغييرات والتوفر</span></a><a href="#t8"><b>٨</b><span>إنهاء الاستخدام</span></a><a href="#t9"><b>٩</b><span>تحديث الشروط</span></a><a href="#t10"><b>١٠</b><span>النظام المعمول به والتواصل</span></a></nav></div>
+  <section class="sec"><h2 id="t1"><span class="n">١</span>القبول</h2><p>باستخدامك لتطبيق «المكون» (التطبيق) المقدَّم من تجربة (نحن) فإنك توافق على هذه الشروط وعلى <a href="/privacy">سياسة الخصوصية</a>. إذا لم توافق على أيٍّ منها فلا تستخدم التطبيق.</p></section>
+  <section class="sec"><h2 id="t2"><span class="n">٢</span>الحساب واللقب</h2><p>يُنشأ لك ملف لاعب على هذا الجهاز باسم مستعار (لقب) تختاره، ويمكنك ربطه ببريد إلكتروني لاسترجاعه. الألقاب فريدة، ويُرفض اللقب المسيء أو المضلِّل أو المنتحِل لشخص أو جهة. أنت مسؤول عن كل ما يجري من خلال ملفك.</p>
+<p>التطبيق موجَّه لمن بلغ ثلاث عشرة سنة فأكثر. إذا كنت دون ذلك فاستخدمه بإشراف وليّ أمرك.</p></section>
+  <section class="sec"><h2 id="t3"><span class="n">٣</span>السلوك داخل اللعبة</h2><p>يُمنع الغش والتلاعب والبرامج المساعدة واستغلال الأخطاء، كما يُمنع التحرش والإساءة والتهديد والمحتوى المخالف للذوق العام أو للأنظمة في المحادثات والأسماء والفرق والمقاطع. يمكننا كتم أو تقييد أو حذف أي ملف يخالف ذلك دون إشعار مسبق، والإبلاغ متاح من داخل التطبيق.</p></section>
+  <section class="sec"><h2 id="t4"><span class="n">٤</span>السلامة أثناء اللعب</h2><p>التطبيق يستخدم الخريطة والواقع المعزز ويشجّع على الحركة بالخارج. انتبه لمحيطك، لا تلعب أثناء القيادة، ولا تدخل أماكن خاصة أو خطرة. أنت المسؤول عن سلامتك وسلامة من حولك، ولا نتحمل مسؤولية إصابات أو أضرار تنتج عن عدم الانتباه أثناء اللعب.</p></section>
+  <section class="sec"><h2 id="t5"><span class="n">٥</span>المحتوى الذي تنشره</h2><p>قد تتيح اللعبة حفظ لقطات من مبارياتك ومشاركتها، أو ربط حسابك في منصات أخرى (مثل تيك توك) ونشر اللقطات عليها باسمك. أنت المسؤول الوحيد عما تنشره وعن التزامه بشروط تلك المنصات وبالأنظمة. الربط اختياري، ويتم بموافقتك الصريحة، ويمكنك إلغاؤه من داخل التطبيق في أي وقت. لا ننشر شيئًا على حسابك دون أمرٍ منك.</p>
+<p>عند المشاركة في المنافسات المبنية على المشاهدات أو النتائج، نعرض لقبك وأرقامك العامة للاعبين الآخرين. يحق لنا استبعاد المحتوى أو المشاركات التي تخالف هذه الشروط أو تُحقَّق بالتلاعب.</p></section>
+  <section class="sec"><h2 id="t6"><span class="n">٦</span>الملكية الفكرية</h2><p>اللعبة وتصاميمها وأسماؤها وشخصياتها وأصواتها ملك لتجربة أو لمرخّصيها. نمنحك رخصة شخصية غير حصرية وغير قابلة للتحويل لاستخدام التطبيق للترفيه. لا يجوز نسخ التطبيق أو تعديله أو إعادة توزيعه أو استخدام محتواه تجاريًا دون إذن كتابي.</p></section>
+  <section class="sec"><h2 id="t7"><span class="n">٧</span>التغييرات والتوفر</h2><p>نطوّر اللعبة باستمرار؛ قد نضيف ميزات أو نزيلها أو نعدّل قواعدها ونقاطها ومواسمها، وقد تتوقف الخدمة مؤقتًا للصيانة. قد نطلب تحديث التطبيق لمواصلة اللعب. تُقدَّم الخدمة «كما هي» دون ضمانات صريحة أو ضمنية بقدر ما يسمح به النظام.</p></section>
+  <section class="sec"><h2 id="t8"><span class="n">٨</span>إنهاء الاستخدام</h2><p>يمكنك حذف ملفك من داخل التطبيق في أي وقت. ويحق لنا تعليق أو إنهاء الوصول لأي ملف يخالف هذه الشروط أو يضر باللاعبين أو بالخدمة.</p></section>
+  <section class="sec"><h2 id="t9"><span class="n">٩</span>تحديث الشروط</h2><p>قد نحدّث هذه الشروط عند تغيّر طريقة عمل الخدمة، ويبيّن التاريخ أعلاه آخر تحديث. استمرارك في الاستخدام بعد التحديث يعني قبولك للنسخة الجديدة.</p></section>
+  <section class="sec"><h2 id="t10"><span class="n">١٠</span>النظام المعمول به والتواصل</h2><p>تخضع هذه الشروط لأنظمة المملكة العربية السعودية. للاستفسار أو الاعتراض أو الإبلاغ، تواصل مع <a class="ltr" href="mailto:kora@tajroba.sa?subject=Almkon%20Terms">kora@tajroba.sa</a>.</p></section>
+  <div class="contact">
+    <p>عندك سؤال عن الشروط أو بلاغ عن مخالفة؟</p>
+    <a class="btn" href="mailto:kora@tajroba.sa?subject=Almkon%20Terms">راسلنا</a>
+    <p class="ltr" style="margin:12px 0 0">kora@tajroba.sa</p>
+  </div>
 </main>
-<footer>© 2026 تجربة · المكون</footer>
+<!-- site-shell:footer -->
+<footer class="site-foot">
+  <div class="site-foot-in">
+    <span>© 2026 تجربة · المكون</span>
+    <nav aria-label="روابط أسفل الصفحة"><a href="/">الرئيسية</a><a href="/tut/">دليل المكون</a><a href="/support">الدعم</a><a href="/privacy">الخصوصية</a><a aria-current="page" href="/terms">الشروط</a></nav>
+  </div>
+</footer>
+<!-- /site-shell:footer -->
+<a class="top" href="#top" aria-label="إلى الأعلى">↑</a>
 </body>
 </html>

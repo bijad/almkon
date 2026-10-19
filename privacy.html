@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@700;800&family=Reem+Kufi:wght@600;700&display=swap">
 <style>
-/* The home page's night-desert identity: ember surfaces, gold rules, a sadu band under the header. */
+/* The home page's night-desert identity: ember surfaces, gold rules; header/footer = site shell below. */
 :root {
   color-scheme: dark;
   --night: #110b07; --ember: #1b130c; --ember-2: #261a10;
@@ -29,15 +29,6 @@ body { margin: 0; background: radial-gradient(ellipse 80% 50% at 80% -10%, #3a24
 a { color: var(--gold); text-underline-offset: .25em; }
 .ltr { direction: ltr; unicode-bidi: isolate; }
 .wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
-header { position: sticky; top: 0; z-index: 5; background: rgba(17, 11, 7, .86); backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
-.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--sand);
-  font-family: var(--brand); font-size: 26px; font-weight: 700; }
-.brand img { width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--line); }
-nav { display: flex; gap: 6px; flex-wrap: wrap; }
-nav a { color: var(--dune); text-decoration: none; font-size: 15px; padding: 6px 12px; border-radius: 999px; }
-nav a[aria-current] { color: var(--night); background: var(--gold); font-weight: 600; }
 .sadu { height: 10px; background: var(--sadu) repeat-x; background-size: 20px 10px; opacity: .9; }
 .hero { padding: 46px 0 18px; }
 .pill { display: inline-block; font-size: 13px; letter-spacing: .08em; color: var(--gold); border: 1px solid var(--line);
@@ -73,31 +64,72 @@ h1 { font-family: var(--display); font-size: clamp(34px, 7vw, 56px); line-height
 .contact p { margin: 0 0 14px; color: var(--dune); }
 .btn { display: inline-block; padding: 12px 28px; border-radius: 999px; font-weight: 700; text-decoration: none;
   color: var(--night); background: linear-gradient(180deg, var(--gold-hi), var(--gold)); }
-footer { margin-top: 30px; border-top: 1px solid var(--line); color: var(--dune); font-size: 14px; }
-footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-block: 22px 40px; }
-footer a { color: var(--dune); }
 .top { position: fixed; inset-inline-start: 16px; bottom: 16px; width: 44px; height: 44px; border-radius: 50%;
   display: grid; place-items: center; background: var(--ember-2); border: 1px solid var(--line); color: var(--gold);
   text-decoration: none; font-size: 20px; }
 @media (max-width: 560px) {
   body { font-size: 16px; }
-  header .wrap { flex-direction: column; align-items: flex-start; gap: 8px; }
   .sec { padding: 4px 18px 14px; }
   .summary { padding: 18px; }
   .toc nav { grid-template-columns: 1fr 1fr; }
 }
+/* site-shell:start — the same header and footer on every almkon.sa page (2026-10-19, site_shell.py). */
+.site-top, .site-foot { --s-night: #110b07; --s-dune: #c9b797; --s-gold: #e3b765; --s-gold-hi: #f8dfa0; --s-gold-lo: #a8742c;
+  --s-line: rgba(227, 183, 101, .22); font-family: 'IBM Plex Sans Arabic', 'Geeza Pro', Tahoma, sans-serif; direction: rtl;
+  line-height: 1.6; text-align: right; }
+.site-top { position: relative; z-index: 6; margin: 0; padding: 0; background: rgba(17, 11, 7, .55);
+  border-bottom: 1px solid var(--s-line); }
+.site-sadu { height: 16px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%236c0f32'/%3E%3Cpath d='M0 40 L20 6 L40 40Z' fill='%23110b07'/%3E%3Cpath d='M9 40 L20 21 L31 40Z' fill='%23e3b765'/%3E%3Cpath d='M20 0 L29 0 L20 13 L11 0Z' fill='%23f2e4c6'/%3E%3C/svg%3E") repeat-x center / 16px 16px; border-block: 2px solid var(--s-gold); }
+.site-bar { box-sizing: border-box; max-width: 1160px; margin: 0 auto; padding: 14px 20px; display: flex; flex-wrap: wrap;
+  align-items: center; gap: 10px 18px; }
+.site-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--s-gold-hi);
+  font-family: 'Reem Kufi', 'Noto Kufi Arabic', 'Geeza Pro', sans-serif; font-weight: 700; font-size: 26px; line-height: 1; }
+.site-brand img { display: block; width: 40px; height: 40px; max-width: none; border-radius: 10px; box-shadow: 0 0 0 2px var(--s-gold-lo); }
+.site-links { display: flex; align-items: center; gap: 4px; margin: 0 auto 0 0; padding: 0; background: none; border: 0;
+  position: static; box-shadow: none; }
+.site-links a { color: var(--s-dune); text-decoration: none; font-size: 15px; font-weight: 500; padding: 6px 12px;
+  border: 0; border-radius: 999px; white-space: nowrap; background: none; }
+.site-links a:hover { color: var(--s-gold-hi); }
+.site-links a[aria-current="page"] { color: var(--s-night); background: var(--s-gold); font-weight: 600; }
+.site-get { display: inline-flex; align-items: center; padding: 8px 18px; border-radius: 999px; border: 1.5px solid var(--s-gold);
+  color: var(--s-gold-hi); font-weight: 600; font-size: 15px; text-decoration: none; white-space: nowrap; }
+.site-get:hover { background: var(--s-gold); color: var(--s-night); }
+.site-top a:focus-visible, .site-foot a:focus-visible { outline: 3px solid var(--s-gold-hi); outline-offset: 3px; }
+.site-foot { margin: 40px 0 0; border-top: 1px solid var(--s-line); color: var(--s-dune); font-size: 14px; background: none; }
+.site-foot-in { box-sizing: border-box; max-width: 1160px; margin: 0 auto; padding: 22px 20px 36px; display: flex; flex-wrap: wrap;
+  justify-content: space-between; align-items: center; gap: 10px 24px; }
+.site-foot nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.site-foot a { color: var(--s-dune); text-decoration: none; }
+.site-foot a:hover { color: var(--s-gold-hi); }
+/* Phones: brand + download on the first row, the page links on their own row under them (they scroll sideways on the
+   narrowest phones instead of breaking onto two lines). */
+@media (max-width: 719px) {
+  .site-bar { padding: 12px 16px 10px; gap: 8px 12px; }
+  .site-get { margin-inline-start: auto; padding: 7px 16px; font-size: 14px; }
+  .site-links { order: 3; flex-basis: 100%; margin: 0; justify-content: space-between; overflow-x: auto; scrollbar-width: none; gap: 2px; }
+  .site-links::-webkit-scrollbar { display: none; }
+  .site-links a { font-size: 14px; padding: 5px 9px; }
+  .site-foot-in { padding: 20px 16px 30px; }
+}
+@media (max-width: 359px) {
+  .site-links a { font-size: 13px; padding: 5px 5px; }
+}
+/* site-shell:end */
 </style>
 </head>
 <body id="top">
-<header>
-  <div class="wrap">
-    <a class="brand" href="/"><img src="img/icon.jpg" alt="">المكون</a>
-    <nav aria-label="روابط الموقع">
-      <a href="/">الرئيسية</a><a href="/support">الدعم</a><a aria-current="page" href="/privacy">الخصوصية</a><a href="/terms">الشروط</a>
+<!-- site-shell:header -->
+<header class="site-top">
+  <div class="site-sadu" aria-hidden="true"></div>
+  <div class="site-bar">
+    <a class="site-brand" href="/"><img src="/img/icon.jpg" alt="" width="40" height="40"><span>المكون</span></a>
+    <nav class="site-links" aria-label="صفحات الموقع">
+      <a href="/">الرئيسية</a><a href="/tut/">دليل المكون</a><a href="/support">الدعم</a><a aria-current="page" href="/privacy">الخصوصية</a><a href="/terms">الشروط</a>
     </nav>
+    <a class="site-get" href="https://apps.apple.com/sa/app/%D8%A7%D9%84%D9%85%D9%83%D9%88%D9%86/id6815615707" target="_blank" rel="noopener">حمّل اللعبة</a>
   </div>
-  <div class="sadu"></div>
 </header>
+<!-- /site-shell:header -->
 <main class="wrap">
   <div class="hero">
     <span class="pill">تجربة · TAJROBA</span>
@@ -116,12 +148,14 @@ footer a { color: var(--dune); }
     <p class="ltr" style="margin:12px 0 0">support@tajroba.sa</p>
   </div>
 </main>
-<footer>
-  <div class="wrap">
+<!-- site-shell:footer -->
+<footer class="site-foot">
+  <div class="site-foot-in">
     <span>© 2026 تجربة · المكون</span>
-    <span><a href="/terms">شروط الاستخدام</a> · <a href="/support">الدعم</a> · <a href="https://apps.apple.com/sa/app/%D8%A7%D9%84%D9%85%D9%83%D9%88%D9%86/id6815615707">المكون على App Store</a></span>
+    <nav aria-label="روابط أسفل الصفحة"><a href="/">الرئيسية</a><a href="/tut/">دليل المكون</a><a href="/support">الدعم</a><a aria-current="page" href="/privacy">الخصوصية</a><a href="/terms">الشروط</a></nav>
   </div>
 </footer>
+<!-- /site-shell:footer -->
 <a class="top" href="#top" aria-label="إلى الأعلى">↑</a>
 </body>
 </html>

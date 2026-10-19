@@ -62,17 +62,6 @@ p { margin: 0; }
 .sadu { height: 22px; background: var(--sadu) repeat-x center / 22px 22px; border-block: 2px solid var(--gold); }
 .eyebrow { font-weight: 600; font-size: 14px; letter-spacing: .04em; color: var(--gold); }
 
-/* Header */
-.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 18px; }
-.mark { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--gold-hi); }
-.mark img { width: 44px; height: 44px; border-radius: 11px; box-shadow: 0 0 0 2px var(--gold-lo), 0 6px 18px var(--shade); }
-.mark span { font-family: var(--brand); font-weight: 700; font-size: 26px; }
-.pill {
-  display: inline-flex; align-items: center; gap: 8px; padding: 9px 20px; border-radius: 999px;
-  border: 1.5px solid var(--gold); color: var(--gold-hi); font-weight: 600; font-size: 15px; text-decoration: none;
-  transition: background .2s, color .2s;
-}
-.pill:hover { background: var(--gold); color: var(--night); }
 
 /* Hero */
 .hero { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center; padding-block: 28px 56px; }
@@ -190,9 +179,6 @@ section { padding-block: 72px; }
 .closing .lead { margin-inline: auto; }
 .reqs { font-size: 14px; color: var(--dune); max-width: 40em; }
 
-footer { border-top: 1px solid var(--line); padding-block: 26px 40px; }
-footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between; align-items: center; font-size: 14px; color: var(--dune); }
-footer nav { display: flex; gap: 20px; }
 
 /* Phone download dock */
 .dock {
@@ -226,35 +212,67 @@ body { padding-bottom: 76px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .scope .ring { animation: none; }
-  .badge, .pill { transition: none; }
+  .badge { transition: none; }
 }
 
-/* Site links (2026-10-19): the other pages, in the header and the footer. Phones: brand + download on one row,
-   the links on their own row under them. */
-.top { flex-wrap: wrap; row-gap: 10px; }
-.links { display: flex; flex-wrap: wrap; gap: 4px 18px; order: 3; flex-basis: 100%; font-size: 15px; font-weight: 500; }
-.links a, footer nav a { color: var(--dune); text-decoration: none; }
-.links a:hover, footer nav a:hover { color: var(--gold-hi); }
-footer nav { flex-wrap: wrap; gap: 6px 20px; }
-@media (min-width: 720px) {
-  .links { order: 0; flex-basis: auto; margin-inline-start: auto; gap: 22px; }
+/* site-shell:start — the same header and footer on every almkon.sa page (2026-10-19, site_shell.py). */
+.site-top, .site-foot { --s-night: #110b07; --s-dune: #c9b797; --s-gold: #e3b765; --s-gold-hi: #f8dfa0; --s-gold-lo: #a8742c;
+  --s-line: rgba(227, 183, 101, .22); font-family: 'IBM Plex Sans Arabic', 'Geeza Pro', Tahoma, sans-serif; direction: rtl;
+  line-height: 1.6; text-align: right; }
+.site-top { position: relative; z-index: 6; margin: 0; padding: 0; background: rgba(17, 11, 7, .55);
+  border-bottom: 1px solid var(--s-line); }
+.site-sadu { height: 16px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%236c0f32'/%3E%3Cpath d='M0 40 L20 6 L40 40Z' fill='%23110b07'/%3E%3Cpath d='M9 40 L20 21 L31 40Z' fill='%23e3b765'/%3E%3Cpath d='M20 0 L29 0 L20 13 L11 0Z' fill='%23f2e4c6'/%3E%3C/svg%3E") repeat-x center / 16px 16px; border-block: 2px solid var(--s-gold); }
+.site-bar { box-sizing: border-box; max-width: 1160px; margin: 0 auto; padding: 14px 20px; display: flex; flex-wrap: wrap;
+  align-items: center; gap: 10px 18px; }
+.site-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--s-gold-hi);
+  font-family: 'Reem Kufi', 'Noto Kufi Arabic', 'Geeza Pro', sans-serif; font-weight: 700; font-size: 26px; line-height: 1; }
+.site-brand img { display: block; width: 40px; height: 40px; max-width: none; border-radius: 10px; box-shadow: 0 0 0 2px var(--s-gold-lo); }
+.site-links { display: flex; align-items: center; gap: 4px; margin: 0 auto 0 0; padding: 0; background: none; border: 0;
+  position: static; box-shadow: none; }
+.site-links a { color: var(--s-dune); text-decoration: none; font-size: 15px; font-weight: 500; padding: 6px 12px;
+  border: 0; border-radius: 999px; white-space: nowrap; background: none; }
+.site-links a:hover { color: var(--s-gold-hi); }
+.site-links a[aria-current="page"] { color: var(--s-night); background: var(--s-gold); font-weight: 600; }
+.site-get { display: inline-flex; align-items: center; padding: 8px 18px; border-radius: 999px; border: 1.5px solid var(--s-gold);
+  color: var(--s-gold-hi); font-weight: 600; font-size: 15px; text-decoration: none; white-space: nowrap; }
+.site-get:hover { background: var(--s-gold); color: var(--s-night); }
+.site-top a:focus-visible, .site-foot a:focus-visible { outline: 3px solid var(--s-gold-hi); outline-offset: 3px; }
+.site-foot { margin: 40px 0 0; border-top: 1px solid var(--s-line); color: var(--s-dune); font-size: 14px; background: none; }
+.site-foot-in { box-sizing: border-box; max-width: 1160px; margin: 0 auto; padding: 22px 20px 36px; display: flex; flex-wrap: wrap;
+  justify-content: space-between; align-items: center; gap: 10px 24px; }
+.site-foot nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.site-foot a { color: var(--s-dune); text-decoration: none; }
+.site-foot a:hover { color: var(--s-gold-hi); }
+/* Phones: brand + download on the first row, the page links on their own row under them (they scroll sideways on the
+   narrowest phones instead of breaking onto two lines). */
+@media (max-width: 719px) {
+  .site-bar { padding: 12px 16px 10px; gap: 8px 12px; }
+  .site-get { margin-inline-start: auto; padding: 7px 16px; font-size: 14px; }
+  .site-links { order: 3; flex-basis: 100%; margin: 0; justify-content: space-between; overflow-x: auto; scrollbar-width: none; gap: 2px; }
+  .site-links::-webkit-scrollbar { display: none; }
+  .site-links a { font-size: 14px; padding: 5px 9px; }
+  .site-foot-in { padding: 20px 16px 30px; }
 }
+@media (max-width: 359px) {
+  .site-links a { font-size: 13px; padding: 5px 5px; }
+}
+/* site-shell:end */
 </style>
 </head>
 <body>
 
-<div class="sadu" aria-hidden="true"></div>
-
-<header class="wrap top">
-  <a class="mark" href="#top" aria-label="المكون">
-    <img src="img/icon.jpg" alt="" width="44" height="44">
-    <span>المكون</span>
-  </a>
-  <nav class="links" aria-label="صفحات الموقع">
-    <a href="/tut/">دليل المكون</a><a href="/support">الدعم</a><a href="/privacy">الخصوصية</a><a href="/terms">الشروط</a>
-  </nav>
-  <a class="pill" href="https://apps.apple.com/sa/app/%D8%A7%D9%84%D9%85%D9%83%D9%88%D9%86/id6815615707" target="_blank" rel="noopener">حمّل اللعبة</a>
+<!-- site-shell:header -->
+<header class="site-top">
+  <div class="site-sadu" aria-hidden="true"></div>
+  <div class="site-bar">
+    <a class="site-brand" href="/"><img src="/img/icon.jpg" alt="" width="40" height="40"><span>المكون</span></a>
+    <nav class="site-links" aria-label="صفحات الموقع">
+      <a aria-current="page" href="/">الرئيسية</a><a href="/tut/">دليل المكون</a><a href="/support">الدعم</a><a href="/privacy">الخصوصية</a><a href="/terms">الشروط</a>
+    </nav>
+    <a class="site-get" href="https://apps.apple.com/sa/app/%D8%A7%D9%84%D9%85%D9%83%D9%88%D9%86/id6815615707" target="_blank" rel="noopener">حمّل اللعبة</a>
+  </div>
 </header>
+<!-- /site-shell:header -->
 
 <main id="top">
   <div class="wrap hero">
@@ -405,14 +423,14 @@ footer nav { flex-wrap: wrap; gap: 6px 20px; }
   </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <span>المكون · من تطوير تجربة</span>
-    <nav aria-label="صفحات الموقع">
-      <a href="/tut/">دليل المكون</a><a href="/support">الدعم</a><a href="/privacy">الخصوصية</a><a href="/terms">الشروط</a>
-    </nav>
+<!-- site-shell:footer -->
+<footer class="site-foot">
+  <div class="site-foot-in">
+    <span>© 2026 تجربة · المكون</span>
+    <nav aria-label="روابط أسفل الصفحة"><a aria-current="page" href="/">الرئيسية</a><a href="/tut/">دليل المكون</a><a href="/support">الدعم</a><a href="/privacy">الخصوصية</a><a href="/terms">الشروط</a></nav>
   </div>
 </footer>
+<!-- /site-shell:footer -->
 
 <div class="dock">
   <img src="img/icon.jpg" alt="" width="42" height="42">

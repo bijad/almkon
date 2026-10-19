@@ -1,26 +1,23 @@
 <!doctype html>
 <html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>دليل المكون</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Reem+Kufi:wght@500;700&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@700;800&family=Reem+Kufi:wght@600;700&display=swap">
+<link rel="icon" href="/img/icon.jpg">
+<meta name="apple-itunes-app" content="app-id=6815615707">
 <style>img{max-width:100%;height:auto}</style><style>
 /* Layout: one RTL reading column (max 880px) with a sticky section bar; sand-and-gold palette from the app itself. */
+/* Night palette and fonts of the rest of almkon.sa (2026-10-19), so the guide feels like the same site. */
 :root{
-  --bg:#f5edda; --paper:#fffaf0; --ink:#2a1c0e; --muted:#6d5a40; --line:#d9c8a2;
-  --gold:#a9771f; --gold-soft:#e8cf9a; --accent:#8c2b3e; --ok:#2f7d4f;
-  --common:#2f9a86; --rare:#2b78b8; --legendary:#b4871f;
-  --display:"Reem Kufi","Tajawal",system-ui,sans-serif; --body:"Tajawal",system-ui,"Segoe UI",Arial,sans-serif;
-  direction:rtl;
+  --bg:#110b07; --paper:#1b130c; --ink:#f2e4c6; --muted:#c9b797; --line:rgba(227,183,101,.22);
+  --gold:#e3b765; --gold-soft:#6b5325; --accent:#e09aa8; --ok:#7dcf9a;
+  --common:#63d5bd; --rare:#67b8f2; --legendary:#e8bd63;
+  --display:'Noto Kufi Arabic','Geeza Pro',Tahoma,sans-serif; --body:'IBM Plex Sans Arabic','Geeza Pro',Tahoma,sans-serif;
+  direction:rtl; color-scheme:dark;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#17110a; --paper:#221a10; --ink:#f3e7cf; --muted:#c9b58d; --line:#4a3a24;
-  --gold:#e2bd67; --gold-soft:#6b5325; --accent:#e09aa8; --ok:#7dcf9a;
-  --common:#63d5bd; --rare:#67b8f2; --legendary:#e8bd63; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#17110a; --paper:#221a10; --ink:#f3e7cf; --muted:#c9b58d; --line:#4a3a24;
-  --gold:#e2bd67; --gold-soft:#6b5325; --accent:#e09aa8; --ok:#7dcf9a;
-  --common:#63d5bd; --rare:#67b8f2; --legendary:#e8bd63; color-scheme:dark}
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.75;margin:0;-webkit-text-size-adjust:100%;overflow-wrap:anywhere}
+body{background:radial-gradient(ellipse 80% 50% at 80% -10%,#3a2412 0,transparent 60%) no-repeat,var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.75;margin:0;-webkit-text-size-adjust:100%;overflow-wrap:anywhere}
 .wrap{max-width:880px;margin:0 auto;padding-inline:18px;padding-block:0 64px}
 h1,h2,h3{font-family:var(--display);line-height:1.3;text-wrap:balance;margin:0}
 h1{font-size:clamp(34px,6vw,54px);color:var(--gold)}
@@ -28,7 +25,7 @@ h2{font-size:clamp(24px,4vw,32px);color:var(--gold);padding-top:14px}
 h3{font-size:20px;margin-top:6px}
 p{margin:0}
 a{color:var(--gold)}
-.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;padding-block:10px;margin-inline:-18px;padding-inline:18px;scrollbar-width:none;box-shadow:0 6px 14px -12px rgba(0,0,0,.35)}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:rgba(17,11,7,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;padding-block:10px;margin-inline:-18px;padding-inline:18px;scrollbar-width:none;box-shadow:0 6px 14px -12px rgba(0,0,0,.35)}
 .nav::-webkit-scrollbar{display:none}
 section{scroll-margin-top:72px}
 .nav a{white-space:nowrap;font-size:14px;font-weight:700;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:5px 12px;background:var(--paper)}
@@ -89,7 +86,61 @@ th{color:var(--muted);font-weight:700;font-size:13.5px}
   .icons img{width:38px;height:38px}
 }
 @media (prefers-reduced-motion:no-preference){.nav a{transition:background .15s}}
+/* site-shell:start — the same header and footer on every almkon.sa page (2026-10-19, site_shell.py). */
+.site-top, .site-foot { --s-night: #110b07; --s-dune: #c9b797; --s-gold: #e3b765; --s-gold-hi: #f8dfa0; --s-gold-lo: #a8742c;
+  --s-line: rgba(227, 183, 101, .22); font-family: 'IBM Plex Sans Arabic', 'Geeza Pro', Tahoma, sans-serif; direction: rtl;
+  line-height: 1.6; text-align: right; }
+.site-top { position: relative; z-index: 6; margin: 0; padding: 0; background: rgba(17, 11, 7, .55);
+  border-bottom: 1px solid var(--s-line); }
+.site-sadu { height: 16px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%236c0f32'/%3E%3Cpath d='M0 40 L20 6 L40 40Z' fill='%23110b07'/%3E%3Cpath d='M9 40 L20 21 L31 40Z' fill='%23e3b765'/%3E%3Cpath d='M20 0 L29 0 L20 13 L11 0Z' fill='%23f2e4c6'/%3E%3C/svg%3E") repeat-x center / 16px 16px; border-block: 2px solid var(--s-gold); }
+.site-bar { box-sizing: border-box; max-width: 1160px; margin: 0 auto; padding: 14px 20px; display: flex; flex-wrap: wrap;
+  align-items: center; gap: 10px 18px; }
+.site-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--s-gold-hi);
+  font-family: 'Reem Kufi', 'Noto Kufi Arabic', 'Geeza Pro', sans-serif; font-weight: 700; font-size: 26px; line-height: 1; }
+.site-brand img { display: block; width: 40px; height: 40px; max-width: none; border-radius: 10px; box-shadow: 0 0 0 2px var(--s-gold-lo); }
+.site-links { display: flex; align-items: center; gap: 4px; margin: 0 auto 0 0; padding: 0; background: none; border: 0;
+  position: static; box-shadow: none; }
+.site-links a { color: var(--s-dune); text-decoration: none; font-size: 15px; font-weight: 500; padding: 6px 12px;
+  border: 0; border-radius: 999px; white-space: nowrap; background: none; }
+.site-links a:hover { color: var(--s-gold-hi); }
+.site-links a[aria-current="page"] { color: var(--s-night); background: var(--s-gold); font-weight: 600; }
+.site-get { display: inline-flex; align-items: center; padding: 8px 18px; border-radius: 999px; border: 1.5px solid var(--s-gold);
+  color: var(--s-gold-hi); font-weight: 600; font-size: 15px; text-decoration: none; white-space: nowrap; }
+.site-get:hover { background: var(--s-gold); color: var(--s-night); }
+.site-top a:focus-visible, .site-foot a:focus-visible { outline: 3px solid var(--s-gold-hi); outline-offset: 3px; }
+.site-foot { margin: 40px 0 0; border-top: 1px solid var(--s-line); color: var(--s-dune); font-size: 14px; background: none; }
+.site-foot-in { box-sizing: border-box; max-width: 1160px; margin: 0 auto; padding: 22px 20px 36px; display: flex; flex-wrap: wrap;
+  justify-content: space-between; align-items: center; gap: 10px 24px; }
+.site-foot nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.site-foot a { color: var(--s-dune); text-decoration: none; }
+.site-foot a:hover { color: var(--s-gold-hi); }
+/* Phones: brand + download on the first row, the page links on their own row under them (they scroll sideways on the
+   narrowest phones instead of breaking onto two lines). */
+@media (max-width: 719px) {
+  .site-bar { padding: 12px 16px 10px; gap: 8px 12px; }
+  .site-get { margin-inline-start: auto; padding: 7px 16px; font-size: 14px; }
+  .site-links { order: 3; flex-basis: 100%; margin: 0; justify-content: space-between; overflow-x: auto; scrollbar-width: none; gap: 2px; }
+  .site-links::-webkit-scrollbar { display: none; }
+  .site-links a { font-size: 14px; padding: 5px 9px; }
+  .site-foot-in { padding: 20px 16px 30px; }
+}
+@media (max-width: 359px) {
+  .site-links a { font-size: 13px; padding: 5px 5px; }
+}
+/* site-shell:end */
 </style></head><body>
+<!-- site-shell:header -->
+<header class="site-top">
+  <div class="site-sadu" aria-hidden="true"></div>
+  <div class="site-bar">
+    <a class="site-brand" href="/"><img src="/img/icon.jpg" alt="" width="40" height="40"><span>المكون</span></a>
+    <nav class="site-links" aria-label="صفحات الموقع">
+      <a href="/">الرئيسية</a><a aria-current="page" href="/tut/">دليل المكون</a><a href="/support">الدعم</a><a href="/privacy">الخصوصية</a><a href="/terms">الشروط</a>
+    </nav>
+    <a class="site-get" href="https://apps.apple.com/sa/app/%D8%A7%D9%84%D9%85%D9%83%D9%88%D9%86/id6815615707" target="_blank" rel="noopener">حمّل اللعبة</a>
+  </div>
+</header>
+<!-- /site-shell:header -->
 
 <div class="wrap" lang="ar">
   <nav class="nav" aria-label="أقسام الدليل">
@@ -281,4 +332,12 @@ th{color:var(--muted);font-weight:700;font-size:13.5px}
   <p class="foot">دليل لعبة المكون · إصدار ١.٠.٧. الأرقام والمسافات في هذا الدليل هي قواعد اللعبة الحالية وقد تتغيّر مع التحديثات.</p>
 </div>
 
+<!-- site-shell:footer -->
+<footer class="site-foot">
+  <div class="site-foot-in">
+    <span>© 2026 تجربة · المكون</span>
+    <nav aria-label="روابط أسفل الصفحة"><a href="/">الرئيسية</a><a aria-current="page" href="/tut/">دليل المكون</a><a href="/support">الدعم</a><a href="/privacy">الخصوصية</a><a href="/terms">الشروط</a></nav>
+  </div>
+</footer>
+<!-- /site-shell:footer -->
 </body></html>
