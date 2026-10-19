@@ -440,7 +440,7 @@ body { padding-bottom: 76px; }
 </dialog>
 <script>
 /* Owner's key (2026-10-19): the dashboard's address is private, so the page never contains it — the owner types the
-   path once and this device remembers it (local only); the key then opens the site editor directly. */
+   path once and this device remembers it (local only) — the box opens with it filled in, so a wrong one is easy to fix. */
 (function () {
   var key = document.getElementById('ownerKey'), box = document.getElementById('keyBox'), word = document.getElementById('keyWord');
   if (!key || !box || !box.showModal) return;
@@ -448,9 +448,9 @@ body { padding-bottom: 76px; }
   function saved() { try { return localStorage.getItem('almkon-owner-path') || ''; } catch (e) { return ''; } }
   key.addEventListener('click', function (ev) {
     ev.preventDefault();
-    var path = saved();
-    if (path && !ev.altKey) { open(path); return; }
-    word.value = path; box.showModal(); word.focus();
+    // Always ask, with the remembered path filled in: one tap on «دخول», or correct a wrong one (2026-10-19).
+    word.value = saved(); box.showModal();
+    if (word.value) document.querySelector('#keyForm .key-go').focus(); else word.focus();
   });
   document.getElementById('keyCancel').addEventListener('click', function () { box.close(); });
   document.getElementById('keyForm').addEventListener('submit', function (ev) {
