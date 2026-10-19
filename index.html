@@ -228,6 +228,14 @@ body { padding-bottom: 76px; }
   .scope .ring { animation: none; }
   .badge, .pill { transition: none; }
 }
+
+/* Owner's key (2026-10-19): a quiet key beside «حمّل اللعبة» that opens the dashboard's site editor. */
+.top-actions { display: inline-flex; align-items: center; gap: 10px; }
+.owner-key { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 50%;
+  border: 1px solid var(--line); color: var(--gold); opacity: .55; transition: opacity .2s, border-color .2s; }
+.owner-key:hover, .owner-key:focus-visible { opacity: 1; border-color: var(--gold); }
+.owner-key svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.owner-key circle { fill: currentColor; stroke: none; }
 </style>
 </head>
 <body>
@@ -239,7 +247,10 @@ body { padding-bottom: 76px; }
     <img src="img/icon.jpg" alt="" width="44" height="44">
     <span>المكون</span>
   </a>
-  <a class="pill" href="https://apps.apple.com/sa/app/%D8%A7%D9%84%D9%85%D9%83%D9%88%D9%86/id6815615707" target="_blank" rel="noopener">حمّل اللعبة</a>
+  <span class="top-actions">
+    <a class="pill" href="https://apps.apple.com/sa/app/%D8%A7%D9%84%D9%85%D9%83%D9%88%D9%86/id6815615707" target="_blank" rel="noopener">حمّل اللعبة</a>
+    <a class="owner-key" href="https://game.tajroba.sa/Dhab/admin/#site" aria-label="دخول الإدارة" title="دخول الإدارة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 7a4 4 0 1 1-3.9 5H3v3h3v-3h2v3h3v-3h.1A4 4 0 0 1 15 7z"/><circle cx="15.5" cy="10.5" r="1"/></svg></a>
+  </span>
 </header>
 
 <main id="top">
