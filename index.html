@@ -455,8 +455,9 @@ body { padding-bottom: 76px; }
   document.getElementById('keyCancel').addEventListener('click', function () { box.close(); });
   document.getElementById('keyForm').addEventListener('submit', function (ev) {
     ev.preventDefault();
-    var path = word.value.trim().replace(/^\/+|\/+$/g, '');
-    if (!/^[A-Za-z0-9_-]{3,64}$/.test(path)) { word.setCustomValidity('اكتب المسار بدون مسافات'); word.reportValidity(); word.setCustomValidity(''); return; }
+    // The bare path, or the dashboard's whole address pasted in (https://mkon.tajroba.sa/<path>/…): keep only the path.
+    var path = word.value.trim().replace(/^https?:\/\//i, '').replace(/^[^\/]*tajroba\.sa\/?/i, '').split(/[\/#?]/)[0];
+    if (!/^[A-Za-z0-9_-]{3,64}$/.test(path)) { word.setCustomValidity('اكتب الكلمة اللي بعد mkon.tajroba.sa/ في رابط لوحتك'); word.reportValidity(); word.setCustomValidity(''); return; }
     try { localStorage.setItem('almkon-owner-path', path); } catch (e) {}
     open(path);
   });
