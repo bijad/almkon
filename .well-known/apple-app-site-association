@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": ["43275BZAK7.com.tajroba.dhabsniper"],
+        "appID": "43275BZAK7.com.tajroba.dhabsniper",
+        "components": [
+          { "/": "/join", "comment": "session invite links" },
+          { "/": "/join/*", "comment": "session invite links" }
+        ],
+        "paths": ["/join", "/join/*"]
+      }
+    ]
+  }
+}

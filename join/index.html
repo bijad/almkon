@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>تعال جلستي في المكون</title>
+<meta name="description" content="صاحبك يناديك لجلسته في المكون. افتح الرابط من آيفون فيه المكون وتدخل الجلسة على طول.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="المكون">
+<meta property="og:title" content="تعال جلستي في المكون 🎯">
+<meta property="og:description" content="اضغط الرابط وتدخل الجلسة على طول.">
+<meta property="og:image" content="https://almkon.sa/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ar_SA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="تعال جلستي في المكون 🎯">
+<meta name="twitter:description" content="اضغط الرابط وتدخل الجلسة على طول.">
+<meta name="twitter:image" content="https://almkon.sa/img/og.jpg">
+<link rel="icon" href="/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600&family=Reem+Kufi:wght@700&display=swap">
+<style>
+:root { color-scheme: dark; }
+body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; background: radial-gradient(ellipse 80% 50% at 80% -10%, #3a2412 0, transparent 60%), #110b07; color: #f2e4c6; font-family: 'IBM Plex Sans Arabic', 'Geeza Pro', Tahoma, sans-serif; text-align: center; padding: 24px; box-sizing: border-box; }
+.box { display: grid; gap: 14px; justify-items: center; max-width: 440px; width: 100%; }
+img.icon { width: 96px; height: 96px; border-radius: 24px; box-shadow: 0 0 0 3px #a8742c; }
+h1 { font-family: 'Reem Kufi', sans-serif; font-size: 32px; margin: 6px 0 0; color: #f8dfa0; }
+p { margin: 0; color: #c9b797; line-height: 1.9; }
+a { color: #e3b765; text-decoration: none; font-weight: 600; }
+a.go { display: block; width: 100%; max-width: 320px; box-sizing: border-box; border-radius: 999px; padding: 13px 22px; font-size: 18px; background: linear-gradient(#f8dfa0, #d9a94e); color: #2a1a0b; }
+a.store { display: block; width: 100%; max-width: 320px; box-sizing: border-box; border: 1.5px solid #e3b765; border-radius: 999px; padding: 11px 22px; color: #f8dfa0; }
+small { color: #9c8a6c; line-height: 1.8; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="box">
+  <img class="icon" src="/img/icon.jpg" alt="المكون">
+  <h1>تعال جلستي</h1>
+  <p id="lead">صاحبك يناديك لجلسته في المكون.</p>
+  <a class="go" id="open" href="almkon://join" hidden>ادخل الجلسة</a>
+  <a class="store" href="https://apps.apple.com/sa/app/%D8%A7%D9%84%D9%85%D9%83%D9%88%D9%86/id6815615707">ما عندك المكون؟ حمّله</a>
+  <small>إذا ما انفتحت الجلسة، حدّث المكون لآخر إصدار وارجع اضغط الرابط.</small>
+</div>
+<script>
+// The universal link opens the app before this page; this button covers in-app browsers (almkon://join?s=…).
+(function () {
+  var s = (new URLSearchParams(location.search).get('s') || '').toUpperCase();
+  if (/^[ABCDEFGHJKLMNPQRSTUVWXYZ23456789]{10}$/.test(s)) {
+    var open = document.getElementById('open');
+    open.href = 'almkon://join?s=' + s;
+    open.hidden = false;
+  } else {
+    document.getElementById('lead').textContent = 'الرابط ناقص. اطلب من صاحبك يرسله مرة ثانية.';
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,2 @@
+# Serve .well-known/apple-app-site-association (session invite links open the app, 2026-10-22).
+include: [".well-known"]
