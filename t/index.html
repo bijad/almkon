@@ -8,14 +8,14 @@
 <meta name="description" content="صاحبك يتحداك في حرب الضبان بالمكون. اقبل التحدي وحمّل اللعبة وابدأ المباراة.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="المكون">
-<meta property="og:title" content="يتحداك في حرب الضبان ⚔️">
+<meta property="og:title" content="صاحبك يتحداك في حرب الضبان ⚔️">
 <meta property="og:description" content="اقبل التحدي وابدأ المباراة في المكون.">
 <meta property="og:image" content="https://almkon.sa/img/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="ar_SA">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="يتحداك في حرب الضبان ⚔️">
+<meta name="twitter:title" content="صاحبك يتحداك في حرب الضبان ⚔️">
 <meta name="twitter:description" content="اقبل التحدي وابدأ المباراة في المكون.">
 <meta name="twitter:image" content="https://almkon.sa/img/og.jpg">
 <link rel="icon" href="/img/favicon-32.png" sizes="32x32" type="image/png">
@@ -45,7 +45,7 @@ small { color: #9c8a6c; line-height: 1.8; }
 <div class="box">
   <div class="ring"><img id="portrait" src="/img/icon.jpg" alt="المكون"></div>
   <p class="tag">حرب الضبان · المكون</p>
-  <h1 id="head"><b id="name">صاحبك</b> يتحداك في حرب الضبان ⚔️</h1>
+  <h1 id="head"><b id="name">صاحبك</b><span id="verb"> يتحداك في حرب الضبان ⚔️</span></h1>
   <p class="meta" id="meta" hidden></p>
   <p id="lead">اقبل التحدي، حمّل المكون، وابدأ المباراة.</p>
   <a class="go" id="accept" href="almkon://t" hidden>اقبل التحدي</a>
@@ -79,6 +79,11 @@ small { color: #9c8a6c; line-height: 1.8; }
   accept.addEventListener('click', function (e) {
     e.preventDefault();
     try { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(location.href).catch(function () {}); } catch (_) {}
+    // Plain Safari already tried the universal link (the app would have opened), so it goes straight to the store:
+    // a failed almkon:// there shows Safari's «address is invalid» alert. In-app browsers (WhatsApp, Snapchat, X,
+    // Instagram…) never fire universal links, so there the scheme is tried first, then the store.
+    var inApp = /FBAN|FBAV|Instagram|Snapchat|Line\/|Twitter|TikTok|WhatsApp|Telegram/i.test(navigator.userAgent) || !/Safari/i.test(navigator.userAgent);
+    if (!inApp) { location.href = STORE; return; }
     var timer = setTimeout(function () { location.href = STORE; }, 1200);
     // The app opened (page went to the background): don't bounce the player to the store when he comes back.
     document.addEventListener('visibilitychange', function () { if (document.hidden) clearTimeout(timer); });
@@ -88,9 +93,11 @@ small { color: #9c8a6c; line-height: 1.8; }
   function show(data) {
     var who = data.challenger || {};
     var nick = String(who.nickname || '').trim();
+    var verb = who.hunterCharacter === 'female' ? 'تتحداك' : 'يتحداك';
     if (nick) {
       $('name').textContent = nick;
-      document.title = nick + ' يتحداك في حرب الضبان — المكون';
+      $('verb').textContent = ' ' + verb + ' في حرب الضبان ⚔️';
+      document.title = nick + ' ' + verb + ' في حرب الضبان — المكون';
     }
     var level = parseInt(who.hunterLevel, 10);
     var line = [String(who.title || '').trim(), level > 0 ? 'مستوى ' + level : ''].filter(Boolean).join(' · ');
