@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>تحدي في حرب الضبان — المكون</title>
+<meta name="description" content="صاحبك يتحداك في حرب الضبان بالمكون. اقبل التحدي وحمّل اللعبة وابدأ المباراة.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="المكون">
+<meta property="og:title" content="يتحداك في حرب الضبان ⚔️">
+<meta property="og:description" content="اقبل التحدي وابدأ المباراة في المكون.">
+<meta property="og:image" content="https://almkon.sa/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ar_SA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="يتحداك في حرب الضبان ⚔️">
+<meta name="twitter:description" content="اقبل التحدي وابدأ المباراة في المكون.">
+<meta name="twitter:image" content="https://almkon.sa/img/og.jpg">
+<link rel="icon" href="/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600&family=Reem+Kufi:wght@700&display=swap">
+<style>
+:root { color-scheme: dark; }
+body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; background: radial-gradient(ellipse 80% 50% at 80% -10%, #3a2412 0, transparent 60%), #110b07; color: #f2e4c6; font-family: 'IBM Plex Sans Arabic', 'Geeza Pro', Tahoma, sans-serif; text-align: center; padding: 24px; box-sizing: border-box; }
+.box { display: grid; gap: 14px; justify-items: center; max-width: 440px; width: 100%; }
+.ring { width: 132px; height: 132px; border-radius: 50%; padding: 4px; background: linear-gradient(160deg, #f8dfa0, #a8742c); box-shadow: 0 10px 30px rgba(0,0,0,.45); }
+.ring img { display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background: #2a1a0b; }
+.tag { font-size: 13px; letter-spacing: .02em; color: #a8742c; margin: 0; }
+h1 { font-family: 'Reem Kufi', sans-serif; font-size: 30px; line-height: 1.35; margin: 0; color: #f8dfa0; }
+h1 b { color: #ffffff; font-weight: 700; }
+.meta { margin: -6px 0 0; font-size: 15px; color: #e3b765; }
+p { margin: 0; color: #c9b797; line-height: 1.9; }
+a { color: #e3b765; text-decoration: none; font-weight: 600; }
+a.go { display: block; width: 100%; max-width: 320px; box-sizing: border-box; border-radius: 999px; padding: 13px 22px; font-size: 18px; background: linear-gradient(#f8dfa0, #d9a94e); color: #2a1a0b; box-shadow: 0 6px 18px rgba(217,169,78,.25); }
+a.store { display: block; width: 100%; max-width: 320px; box-sizing: border-box; border: 1.5px solid #e3b765; border-radius: 999px; padding: 11px 22px; color: #f8dfa0; }
+small { color: #9c8a6c; line-height: 1.8; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="ring"><img id="portrait" src="/img/icon.jpg" alt="المكون"></div>
+  <p class="tag">حرب الضبان · المكون</p>
+  <h1 id="head"><b id="name">صاحبك</b> يتحداك في حرب الضبان ⚔️</h1>
+  <p class="meta" id="meta" hidden></p>
+  <p id="lead">اقبل التحدي، حمّل المكون، وابدأ المباراة.</p>
+  <a class="go" id="accept" href="almkon://t" hidden>اقبل التحدي</a>
+  <small id="hint" hidden>لو ما انفتحت اللعبة بعد التحميل، ارجع اضغط الرابط</small>
+  <a class="store" id="store" href="https://apps.apple.com/sa/app/%D8%A7%D9%84%D9%85%D9%83%D9%88%D9%86/id6815615707">ما عندك المكون؟ حمّله</a>
+</div>
+<script>
+// Outside challenge landing (owner 2026-10-28). The universal link opens the app before this page when it is
+// installed; here the friend without the app sees who challenges him. «اقبل التحدي» copies this URL (the app reads
+// it once after its first launch), tries almkon://t?c=… for in-app browsers, then falls to the App Store.
+(function () {
+  var STORE = 'https://apps.apple.com/sa/app/%D8%A7%D9%84%D9%85%D9%83%D9%88%D9%86/id6815615707';
+  var API = 'https://game.tajroba.sa/Dhab/v1/outside-challenges/public/';
+  var $ = function (id) { return document.getElementById(id); };
+  var lead = $('lead'), accept = $('accept'), hint = $('hint');
+  var c = (new URLSearchParams(location.search).get('c') || '').toUpperCase();
+
+  function missing() {
+    accept.hidden = true; hint.hidden = true;
+    lead.textContent = 'الرابط ناقص. اطلب من صاحبك يرسله مرة ثانية.';
+  }
+  function closed(text) {
+    accept.hidden = true; hint.hidden = true;
+    lead.textContent = text;
+  }
+
+  if (!/^[ABCDEFGHJKLMNPQRSTUVWXYZ23456789]{10}$/.test(c)) { missing(); return; }
+
+  accept.href = 'almkon://t?c=' + c;
+  accept.hidden = false; hint.hidden = false;
+  accept.addEventListener('click', function (e) {
+    e.preventDefault();
+    try { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(location.href).catch(function () {}); } catch (_) {}
+    var timer = setTimeout(function () { location.href = STORE; }, 1200);
+    // The app opened (page went to the background): don't bounce the player to the store when he comes back.
+    document.addEventListener('visibilitychange', function () { if (document.hidden) clearTimeout(timer); });
+    location.href = 'almkon://t?c=' + c;
+  });
+
+  function show(data) {
+    var who = data.challenger || {};
+    var nick = String(who.nickname || '').trim();
+    if (nick) {
+      $('name').textContent = nick;
+      document.title = nick + ' يتحداك في حرب الضبان — المكون';
+    }
+    var level = parseInt(who.hunterLevel, 10);
+    var line = [String(who.title || '').trim(), level > 0 ? 'مستوى ' + level : ''].filter(Boolean).join(' · ');
+    if (line) { $('meta').textContent = line; $('meta').hidden = false; }
+    var avatar = String(who.avatarID || '');
+    if (/^hunter-(female-)?level-\d{2}$/.test(avatar)) {
+      var img = $('portrait');
+      img.onerror = function () { img.onerror = null; img.src = '/img/icon.jpg'; };
+      img.src = '/img/hunters/' + avatar + '.jpg';
+      img.alt = nick || 'المكون';
+    }
+    if (data.state === 'accepted') closed('قبل التحدي واحد قبلك، بس تقدر تحمّل اللعبة وتتحداه.');
+    else if (data.state === 'expired' || data.state === 'cancelled') closed('انتهى هذا التحدي.');
+  }
+
+  // A simple GET (no headers, no credentials) so the browser sends no preflight; the server answers this route
+  // with Access-Control-Allow-Origin for almkon.sa only. 404 = unknown token; any other failure keeps the button.
+  fetch(API + c, { credentials: 'omit', cache: 'no-store' }).then(function (r) {
+    if (r.status === 404) { missing(); return; }
+    if (!r.ok) return;
+    return r.json().then(show);
+  }).catch(function () {});
+})();
+</script>
+</body>
+</html>

@@ -7,9 +7,11 @@
         "appID": "43275BZAK7.com.tajroba.dhabsniper",
         "components": [
           { "/": "/join", "comment": "session invite links" },
-          { "/": "/join/*", "comment": "session invite links" }
+          { "/": "/join/*", "comment": "session invite links" },
+          { "/": "/t", "comment": "outside challenge links (2026-10-28)" },
+          { "/": "/t/*", "comment": "outside challenge links (2026-10-28)" }
         ],
-        "paths": ["/join", "/join/*"]
+        "paths": ["/join", "/join/*", "/t", "/t/*"]
       }
     ]
   }
